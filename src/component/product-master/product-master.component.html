@@ -1,0 +1,433 @@
+<div class="container">
+  <h1>Product Master</h1>
+  <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+    <div class="form-group">
+      <p-floatLabel>
+        <input pInputText id="id" [(ngModel)]="product.id" name="id" required />
+        <label for="id">ID</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <input
+          pInputText
+          id="title"
+          [(ngModel)]="product.title"
+          name="title"
+          required
+        />
+        <label for="title">Title</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <textarea
+          pInputTextarea
+          id="description"
+          [(ngModel)]="product.description"
+          name="description"
+          required
+        ></textarea>
+        <label for="description">Description</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <input
+          pInputText
+          id="category"
+          [(ngModel)]="product.category"
+          name="category"
+          required
+        />
+        <label for="category">Category</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <p-inputNumber
+          id="price"
+          [(ngModel)]="product.price"
+          name="price"
+          mode="currency"
+          currency="USD"
+          [minFractionDigits]="2"
+          required
+        ></p-inputNumber>
+        <label for="price">Price</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <p-inputNumber
+          id="discountPercentage"
+          [(ngModel)]="product.discountPercentage"
+          name="discountPercentage"
+          suffix="%"
+          [min]="0"
+          [max]="100"
+          required
+        ></p-inputNumber>
+        <label for="discountPercentage">Discount Percentage</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <p-rating
+          id="rating"
+          [(ngModel)]="product.rating"
+          name="rating"
+          [stars]="5"
+          [cancel]="false"
+        ></p-rating>
+        <label for="rating">Rating</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <p-inputNumber
+          id="stock"
+          [(ngModel)]="product.stock"
+          name="stock"
+          [showButtons]="true"
+          [min]="0"
+          required
+        ></p-inputNumber>
+        <label for="stock">Stock</label>
+      </p-floatLabel>
+    </div>
+
+    <div class="form-group">
+      <h2>Tags</h2>
+      <div *ngFor="let tag of product.tags; let i = index; trackBy: trackByFn">
+        <p-floatLabel>
+          <input
+            pInputText
+            [id]="'tag-' + i"
+            [(ngModel)]="product.tags[i]"
+            [name]="'tag-' + i"
+          />
+          <label [for]="'tag-' + i">Tag {{ i + 1 }}</label>
+        </p-floatLabel>
+        <button
+          pButton
+          type="button"
+          icon="pi pi-times"
+          (click)="removeTag(i)"
+          *ngIf="product.tags.length > 1"
+        ></button>
+      </div>
+      <button
+        pButton
+        type="button"
+        label="Add Tag"
+        icon="pi pi-plus"
+        (click)="addTag()"
+      ></button>
+    </div>
+
+    <div class="form-group">
+      <p-floatLabel>
+        <input
+          pInputText
+          id="brand"
+          [(ngModel)]="product.brand"
+          name="brand"
+          required
+        />
+        <label for="brand">Brand</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <input
+          pInputText
+          id="sku"
+          [(ngModel)]="product.sku"
+          name="sku"
+          required
+        />
+        <label for="sku">SKU</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <p-inputNumber
+          id="weight"
+          [(ngModel)]="product.weight"
+          name="weight"
+          suffix=" kg"
+          [minFractionDigits]="2"
+          [maxFractionDigits]="2"
+          required
+        ></p-inputNumber>
+        <label for="weight">Weight (kg)</label>
+      </p-floatLabel>
+    </div>
+
+    <div class="form-group">
+      <h2>Dimensions</h2>
+      <p-floatLabel>
+        <p-inputNumber
+          id="width"
+          [(ngModel)]="product.dimensions.width"
+          name="width"
+          suffix=" cm"
+          [minFractionDigits]="2"
+          [maxFractionDigits]="2"
+          required
+        ></p-inputNumber>
+        <label for="width">Width (cm)</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <p-inputNumber
+          id="height"
+          [(ngModel)]="product.dimensions.height"
+          name="height"
+          suffix=" cm"
+          [minFractionDigits]="2"
+          [maxFractionDigits]="2"
+          required
+        ></p-inputNumber>
+        <label for="height">Height (cm)</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <p-inputNumber
+          id="depth"
+          [(ngModel)]="product.dimensions.depth"
+          name="depth"
+          suffix=" cm"
+          [minFractionDigits]="2"
+          [maxFractionDigits]="2"
+          required
+        ></p-inputNumber>
+        <label for="depth">Depth (cm)</label>
+      </p-floatLabel>
+    </div>
+
+    <div class="form-group">
+      <p-floatLabel>
+        <textarea
+          pInputTextarea
+          id="warrantyInformation"
+          [(ngModel)]="product.warrantyInformation"
+          name="warrantyInformation"
+          required
+        ></textarea>
+        <label for="warrantyInformation">Warranty Information</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <textarea
+          pInputTextarea
+          id="shippingInformation"
+          [(ngModel)]="product.shippingInformation"
+          name="shippingInformation"
+          required
+        ></textarea>
+        <label for="shippingInformation">Shipping Information</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <p-dropdown
+          id="availabilityStatus"
+          [(ngModel)]="product.availabilityStatus"
+          name="availabilityStatus"
+          [options]="availabilityOptions"
+          optionLabel="label"
+          optionValue="value"
+          required
+        ></p-dropdown>
+        <label for="availabilityStatus">Availability Status</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <textarea
+          pInputTextarea
+          id="returnPolicy"
+          [(ngModel)]="product.returnPolicy"
+          name="returnPolicy"
+          required
+        ></textarea>
+        <label for="returnPolicy">Return Policy</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <p-inputNumber
+          id="minimumOrderQuantity"
+          [(ngModel)]="product.minimumOrderQuantity"
+          name="minimumOrderQuantity"
+          [showButtons]="true"
+          [min]="1"
+          required
+        ></p-inputNumber>
+        <label for="minimumOrderQuantity">Minimum Order Quantity</label>
+      </p-floatLabel>
+    </div>
+
+    <div class="form-group">
+      <h2>Meta Information</h2>
+      <p-floatLabel>
+        <p-calendar
+          id="createdAt"
+          [(ngModel)]="product.meta.createdAt"
+          name="createdAt"
+          [showTime]="true"
+          required
+        ></p-calendar>
+        <label for="createdAt">Created At</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <p-calendar
+          id="updatedAt"
+          [(ngModel)]="product.meta.updatedAt"
+          name="updatedAt"
+          [showTime]="true"
+          required
+        ></p-calendar>
+        <label for="updatedAt">Updated At</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <input
+          pInputText
+          id="barcode"
+          [(ngModel)]="product.meta.barcode"
+          name="barcode"
+          required
+        />
+        <label for="barcode">Barcode</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <input
+          pInputText
+          id="qrCode"
+          [(ngModel)]="product.meta.qrCode"
+          name="qrCode"
+          required
+        />
+        <label for="qrCode">QR Code</label>
+      </p-floatLabel>
+    </div>
+
+    <div class="form-group">
+      <p-floatLabel>
+        <input
+          pInputText
+          id="thumbnail"
+          [(ngModel)]="product.thumbnail"
+          name="thumbnail"
+          required
+        />
+        <label for="thumbnail">Thumbnail URL</label>
+      </p-floatLabel>
+    </div>
+
+    <div class="form-group">
+      <h2>Images</h2>
+      <div
+        *ngFor="let image of product.images; let i = index; trackBy: trackByFn"
+      >
+        <p-floatLabel>
+          <input
+            pInputText
+            [id]="'image-' + i"
+            [(ngModel)]="product.images[i]"
+            [name]="'image-' + i"
+            required
+          />
+          <label [for]="'image-' + i">Image URL {{ i + 1 }}</label>
+        </p-floatLabel>
+        <button
+          pButton
+          type="button"
+          icon="pi pi-times"
+          (click)="removeImage(i)"
+          *ngIf="product.images.length > 1"
+        ></button>
+      </div>
+      <button
+        pButton
+        type="button"
+        label="Add Image"
+        icon="pi pi-plus"
+        (click)="addImage()"
+      ></button>
+    </div>
+
+    <div class="form-group">
+      <h2>Reviews</h2>
+      <div
+        *ngFor="
+          let review of product.reviews;
+          let i = index;
+          trackBy: trackByFn
+        "
+      >
+        <p-floatLabel>
+          <input
+            pInputText
+            [id]="'user-' + i"
+            [(ngModel)]="review.user"
+            [name]="'user-' + i"
+            required
+          />
+          <label [for]="'user-' + i">User</label>
+        </p-floatLabel>
+
+        <p-floatLabel>
+          <p-rating
+            [id]="'rating-' + i"
+            [(ngModel)]="review.rating"
+            [name]="'rating-' + i"
+            [stars]="5"
+            [cancel]="false"
+            required
+          ></p-rating>
+          <label [for]="'rating-' + i">Rating</label>
+        </p-floatLabel>
+
+        <p-floatLabel>
+          <textarea
+            pInputTextarea
+            [id]="'comment-' + i"
+            [(ngModel)]="review.comment"
+            [name]="'comment-' + i"
+            required
+          ></textarea>
+          <label [for]="'comment-' + i">Comment</label>
+        </p-floatLabel>
+
+        <p-floatLabel>
+          <p-calendar
+            [id]="'date-' + i"
+            [(ngModel)]="review.date"
+            [name]="'date-' + i"
+            [showTime]="true"
+            required
+          ></p-calendar>
+          <label [for]="'date-' + i">Date</label>
+        </p-floatLabel>
+
+        <button
+          pButton
+          type="button"
+          icon="pi pi-times"
+          (click)="removeReview(i)"
+          *ngIf="product.reviews.length > 1"
+        ></button>
+      </div>
+      <button
+        pButton
+        type="button"
+        label="Add Review"
+        icon="pi pi-plus"
+        (click)="addReview()"
+      ></button>
+    </div>
+
+    <div class="form-group">
+      <button
+        pButton
+        type="submit"
+        label="Submit"
+        [disabled]="!productForm.form.valid"
+      ></button>
+    </div>
+  </form>
+</div>

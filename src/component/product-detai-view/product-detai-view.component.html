@@ -1,0 +1,114 @@
+<div class="product-container">
+  <div class="product-layout">
+    <!-- Image Gallery -->
+    <div class="image-gallery">
+      <div class="main-image">
+        <div
+          class="zoom-image"
+          [style.background-image]="
+            'url(https:' + product.images[currentImageIndex] + ')'
+          "
+          [style.transform]="'scale(' + (isZoomed ? 2 : 1) + ')'"
+          [style.transform-origin]="
+            zoomPosition.x * 100 + '% ' + zoomPosition.y * 100 + '%'
+          "
+          (mousemove)="handleImageZoom($event)"
+          (mouseleave)="resetZoom()"
+          (mouseenter)="isZoomed = true"
+          (mouseleave)="isZoomed = false"
+        ></div>
+      </div>
+      <div class="thumbnail-carousel">
+        <button (click)="handlePrevImage()" class="nav-button">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="thumbnails">
+          <button
+            *ngFor="let image of product.images; let i = index"
+            (click)="handleThumbnailClick(i)"
+            [class.active]="i === currentImageIndex"
+            class="thumbnail"
+          >
+            <img [src]="'https:' + image" [alt]="product.galleryImageAlt[i]" />
+          </button>
+        </div>
+        <button (click)="handleNextImage()" class="nav-button">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Product Info -->
+    <div class="product-info">
+      <h1 class="product-title">{{ product.displayName }}</h1>
+      <div class="product-price">
+        <span class="discounted-price">₹{{ product.promotionPrice }}</span>
+        <span class="original-price">₹{{ product.price }}</span>
+        <span class="savings">Save ₹{{ product.saveText }}</span>
+      </div>
+      <p class="product-description">{{ product.description }}</p>
+      <div class="key-features">
+        <h2>Key Features:</h2>
+        <ul>
+          <li *ngFor="let feature of product.features">{{ feature }}</li>
+        </ul>
+      </div>
+      <div class="quantity-selector">
+        <button (click)="handleQuantityChange(-1)" class="quantity-button">
+          <i class="fas fa-minus"></i>
+        </button>
+        <span class="quantity">{{ quantity }}</span>
+        <button (click)="handleQuantityChange(1)" class="quantity-button">
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+      <button class="add-to-cart">
+        <i class="fas fa-shopping-cart"></i>
+        Add to Cart
+      </button>
+      <p *ngIf="product.financing" class="financing">
+        {{ product.financingDesc[0] }}
+      </p>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="product-tabs">
+    <nav class="tab-nav">
+      <button
+        *ngFor="let tab of tabs"
+        (click)="setActiveTab(tab)"
+        [class.active]="activeTab === tab"
+        class="tab-button"
+      >
+        {{ tab | titlecase }}
+      </button>
+    </nav>
+    <div class="tab-content">
+      <p *ngIf="activeTab === 'description'">{{ product.description }}</p>
+      <p *ngIf="activeTab === 'warranty'">Warranty information goes here.</p>
+      <p *ngIf="activeTab === 'reviews'">No reviews yet.</p>
+    </div>
+  </div>
+
+  <!-- Related Products -->
+  <div class="related-products">
+    <h2>Related Products</h2>
+    <div class="product-grid">
+      <div *ngFor="let item of [1, 2, 3, 4]" class="related-product">
+        <div class="product-image"></div>
+        <h3>Related Product {{ item }}</h3>
+        <p>₹XX,XXX</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="newsletter">
+    <h2>Join Our Newsletter</h2>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Enter your email" class="email-input" />
+      <button type="submit" class="subscribe-button">Subscribe</button>
+    </form>
+  </div>
+</div>
