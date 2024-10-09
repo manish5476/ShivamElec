@@ -24,65 +24,26 @@
 <main>
   <section class="hero">
     <div class="hero-content">
-      <!-- <span class="badge">New Release</span> -->
       <h1 style="color: rgb(229, 130, 0)">{{ featuredProduct.name }}</h1>
       <div class="rating">
-        <!-- <span class="stars">
-          <i class="material-icons" *ngFor="let star of [1, 2, 3, 4, 5]">
-            {{ star <= featuredProduct.rating ? "star" : "star_border" }}
-          </i>
-        </span> -->
-        <span class="reviews">{{ featuredProduct.reviews }} </span>
+        <span class="reviews">{{ featuredProduct.reviews }}</span>
       </div>
-      <!-- <button class="cta-button">Shop Now</button> -->
     </div>
-    <!-- <div class="hero-image">
-      <img [src]="featuredProduct.image" [alt]="featuredProduct.name" />
-    </div> -->
   </section>
-
-  <!-- <section class="categories">
-    <h2>Browse by Category</h2>
-    <div class="category-grid">
-      <div class="category-item" *ngFor="let category of data">
-        <i class="material-icons">{{ category.icon }}</i>
-        <span>{{ category.name }}</span>
-      </div>
-    </div>
-  </section> -->
-
-  <!-- <section class="featured-product">
-    <div class="featured-content">
-      <h2>{{ featuredHeadphone.name }}</h2>
-      <div class="feature-list">
-        <div
-          class="feature-item"
-          *ngFor="let feature of featuredHeadphone.features"
-        >
-          <span class="feature-number">{{ feature.charAt(0) }}</span>
-          <span class="feature-text">{{ feature }}</span>
-        </div>
-      </div>
-      <button class="cta-button">Choose Color</button>
-    </div>
-    <div class="featured-image">
-      <img [src]="featuredHeadphone.image" [alt]="featuredHeadphone.name" />
-    </div>
-  </section> -->
 
   <section class="product-grid">
     <h2>Explore our Products</h2>
     <div class="grid">
       <div class="product-card" *ngFor="let product of data">
-        <img [src]="product.thumbUrl" [alt]="product.name" />
+        <img [src]="product.thumbUrl" [alt]="product.displayName" />
         <div class="product-info">
-          <h3>{{ product.name }}</h3>
+          <h3>{{ product.displayName }}</h3>
           <div class="price-rating">
             <div class="price">
-              <span class="current-price">{{ product.price.toFixed(2) }}</span>
-              <span class="old-price" *ngIf="product.oldPrice"
-                >${{ product.oldPrice.toFixed(2) }}</span
-              >
+              <span class="current-price">{{ product.price }}</span>
+              <span class="old-price" *ngIf="product.oldPrice">
+                ${{ product.oldPrice.toFixed(2) }}
+              </span>
             </div>
             <div class="rating">
               <span class="stars">
@@ -120,7 +81,6 @@
     </div>
     <div class="footer-section">
       <h3>Contact Us</h3>
-      <p></p>
       <p>Phone: (123) 456-7890</p>
     </div>
     <div class="footer-section">
@@ -137,14 +97,18 @@
 </footer>
 
 <p-dialog
-  header="Header"
+  *ngIf="this.singleProduct"
+  header="Product Details"
   [modal]="true"
   [(visible)]="toggle"
   [style]="{ width: '50rem' }"
   [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
   [maximizable]="true"
 >
-  {{ singleProduct | json }}
-  <app-product-detai-view [data]="this.singleProduct"></app-product-detai-view
-></p-dialog>
+  <ng-container *ngIf="singleProduct">
+    <app-product-detai-view
+      [data]="this.singleProduct"
+    ></app-product-detai-view>
+  </ng-container>
+</p-dialog>
 <router-outlet />

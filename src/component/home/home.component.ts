@@ -1,20 +1,20 @@
 import { Component, Renderer2 } from '@angular/core';
 import { APIServicesService } from '../../Services/apiservices.service';
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  oldPrice?: number;
-  image: string;
-  rating: number;
-  reviews: number;
-}
+// interface Product {
+//   id: number;
+//   name: string;
+//   price: number;
+//   oldPrice?: number;
+//   image: string;
+//   rating: number;
+//   reviews: number;
+// }
 
-interface Category {
-  name: string;
-  icon: string;
-}
+// interface Category {
+//   name: string;
+//   icon: string;
+// }
 
 interface Theme {
   name: string;
@@ -29,7 +29,6 @@ interface Theme {
 })
 export class HomeComponent {
   shopName = 'shivam Electronics';
-
   navItems = ['Home', 'Shop', 'Pages', 'About', 'Blog', 'Contact'];
 
   featuredProduct = {
@@ -40,15 +39,15 @@ export class HomeComponent {
       'https://images.unsplash.com/photo-1517765371796-5bd3a7d30a29?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   };
 
-  categories: Category[] = [
-    { name: 'Smartphones', icon: 'smartphone' },
-    { name: 'Computers', icon: 'desktop_windows' },
-    { name: 'Smartwatches', icon: 'watch' },
-    { name: 'Cameras', icon: 'camera_alt' },
-    { name: 'Headphones', icon: 'headset' },
-    { name: 'Accessories', icon: 'devices_other' },
-    { name: 'Gaming', icon: 'sports_esports' },
-  ];
+  // categories: Category[] = [
+  //   { name: 'Smartphones', icon: 'smartphone' },
+  //   { name: 'Computers', icon: 'desktop_windows' },
+  //   { name: 'Smartwatches', icon: 'watch' },
+  //   { name: 'Cameras', icon: 'camera_alt' },
+  //   { name: 'Headphones', icon: 'headset' },
+  //   { name: 'Accessories', icon: 'devices_other' },
+  //   { name: 'Gaming', icon: 'sports_esports' },
+  // ];
 
   themes: Theme[] = [
     {
@@ -93,10 +92,10 @@ export class HomeComponent {
     this.api.getProducts().subscribe((res: any) => {
       this.data = res.data.products;
     });
+    console.log(this.data);
   }
   ProductPreview(product: any) {
     this.toggle = !this.toggle;
     this.singleProduct = product;
-    console.log(this.singleProduct);
   }
 }
