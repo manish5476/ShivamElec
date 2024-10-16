@@ -1,334 +1,212 @@
-<!-- <div class="product-container">
-  <div class="product-layout">
-     Image Gallery 
-    <div class="image-gallery">
-      <div class="main-image">
-        <div
-          class="zoom-image"
-          [style.background-image]="
-            'url(' + product.galleryImage[currentImageIndex] + ')'
-          "
-          [style.transform]="'scale(' + (isZoomed ? 2 : 1) + ')'"
-          [style.transform-origin]="
-            zoomPosition.x * 100 + '% ' + zoomPosition.y * 100 + '%'
-          "
-          (mousemove)="handleImageZoom($event)"
-          (mouseleave)="resetZoom()"
-          (mouseenter)="isZoomed = true"
-          (mouseleave)="isZoomed = false"
-        ></div>
+<div class="card">
+  <p-galleria
+    #galleria
+    [value]="images"
+    [(activeIndex)]="activeIndex"
+    [numVisible]="5"
+    [showThumbnails]="showThumbnails"
+    [showItemNavigators]="true"
+    [showItemNavigatorsOnHover]="true"
+    [circular]="true"
+    [autoPlay]="true"
+    [transitionInterval]="3000"
+    [containerStyle]="{ 'max-width': '640px' }"
+    [containerClass]="galleriaClass()"
+  >
+    <ng-template pTemplate="item" let-item>
+      <img
+        [src]="item.itemImageSrc"
+        [ngStyle]="{
+          width: !fullscreen ? '100%' : '',
+          display: !fullscreen ? 'block' : ''
+        }"
+      />
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item>
+      <div class="grid grid-nogutter justify-content-center">
+        <img [src]="item.thumbnailImageSrc" />
       </div>
-      <div class="thumbnail-carousel">
-        <button (click)="handlePrevImage()" class="nav-button">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <div class="thumbnails">
-          <button
-            *ngFor="let image of product.images; let i = index"
-            (click)="handleThumbnailClick(i)"
-            [class.active]="i === currentImageIndex"
-            class="thumbnail"
-          >
-            <img [src]="product.thumbUrl" />
-          </button>
+    </ng-template>
+    <ng-template pTemplate="footer" let-item>
+      <div class="custom-galleria-footer">
+        <button
+          type="button"
+          pButton
+          icon="pi pi-list"
+          (click)="onThumbnailButtonClick()"
+        ></button>
+        <span *ngIf="images" class="title-container">
+          <span>{{ activeIndex + 1 }}/{{ images.length }}</span>
+          <span class="title">{{ images[activeIndex].title }}</span>
+          <span>{{ images[activeIndex].alt }}</span>
+        </span>
+        <button
+          type="button"
+          pButton
+          [icon]="fullScreenIcon()"
+          (click)="toggleFullScreen()"
+          class="fullscreen-button"
+        ></button>
+      </div>
+    </ng-template>
+  </p-galleria>
+</div>
+<body>
+  <div class="hero">
+    <div class="hero-content">
+      <div class="logo">S'</div>
+      <div>
+        <h1 class="title">I'm proper tooled up gee.</h1>
+        <p class="subtitle">
+          Color is so powerful that it can persuade, motivate.
+        </p>
+        <div class="pagination">
+          <span class="pagination-dot"></span>
+          <span class="pagination-dot active"></span>
+          <span class="pagination-dot"></span>
         </div>
-        <button (click)="handleNextImage()" class="nav-button">
-          <i class="fas fa-chevron-right"></i>
-        </button>
       </div>
+      <div>Advertising.</div>
     </div>
-
-     Product Info 
-    <div class="product-info">
-      <h1 class="product-title">{{ product.displayName }}</h1>
-      <div class="product-price">
-        <span class="discounted-price">₹{{ product.promotionPrice }}</span>
-        <span class="original-price">₹{{ product.price }}</span>
-        <span class="savings">Save ₹{{ product.saveText }}</span>
-      </div>
-      <p class="product-description">{{ product.description }}</p>
-      <div class="key-features">
-        <h2>Key Features:</h2>
-        <ul>
-          <li *ngFor="let feature of product.features">{{ feature }}</li>
-        </ul>
-      </div>
-      <div class="quantity-selector">
-        <button (click)="handleQuantityChange(-1)" class="quantity-button">
-          <i class="fas fa-minus"></i>
-        </button>
-        <span class="quantity">{{ quantity }}</span>
-        <button (click)="handleQuantityChange(1)" class="quantity-button">
-          <i class="fas fa-plus"></i>
-        </button>
-      </div>
-      <button class="add-to-cart">
-        <i class="fas fa-shopping-cart"></i>
-        Add to Cart
-      </button>
-      <p *ngIf="product.financing" class="financing">
-        {{ product.financingDesc[0] }}
-      </p>
+    <div class="hero-image-container">
+      <img [src]="product.largeUrl" alt="Hero image" class="hero-image" />
     </div>
   </div>
 
-   Tabs 
-  <div class="product-tabs">
-    <nav class="tab-nav">
-      <button
-        *ngFor="let tab of tabs"
-        (click)="setActiveTab(tab)"
-        [class.active]="activeTab === tab"
-        class="tab-button"
-      >
-        {{ tab | titlecase }}
-      </button>
-    </nav>
-    <div class="tab-content">
-      <p *ngIf="activeTab === 'description'">{{ product.description }}</p>
-      <p *ngIf="activeTab === 'warranty'">Warranty information goes here.</p>
-      <p *ngIf="activeTab === 'reviews'">No reviews yet.</p>
-    </div>
-  </div>
-
-   Related Products 
-  <div class="related-products">
-    <h2>Related Products</h2>
+  <div class="container">
     <div class="product-grid">
-      <div *ngFor="let item of [1, 2, 3, 4]" class="related-product">
-        <div class="product-image"></div>
-        <h3>Related Product {{ item }}</h3>
-        <p>₹XX,XXX</p>
-      </div>
-    </div>
-  </div>
-
-   Newsletter 
-  <div class="newsletter">
-    <h2>Join Our Newsletter</h2>
-    <form class="newsletter-form">
-      <input type="email" placeholder="Enter your email" class="email-input" />
-      <button type="submit" class="subscribe-button">Subscribe</button>
-    </form>
-  </div>
-</div> -->
-
-<!-- <div class="container mx-auto px-4 py-8">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <div class="space-y-4">
-      <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden">
-        <img
-          [src]="product.largeUrl"
-          [alt]="product.displayName"
-          class="w-full h-full object-cover"
-        />
-      </div>
-      <div class="grid grid-cols-4 gap-4">
-        <div
-          *ngFor="let image of product.galleryImage; let i = index"
-          class="aspect-square bg-gray-200 rounded-lg overflow-hidden"
-        >
-          <img
-            [src]="image"
-            [alt]="product.galleryImageAlt[i]"
-            class="w-full h-full object-cover"
-          />
+      <div class="product-images">
+        <div class="card">
+          <p-galleria
+            #galleria
+            [value]="images"
+            [(activeIndex)]="activeIndex"
+            [numVisible]="5"
+            [showThumbnails]="showThumbnails"
+            [showItemNavigators]="true"
+            [showItemNavigatorsOnHover]="true"
+            [circular]="true"
+            [autoPlay]="true"
+            [transitionInterval]="3000"
+            [containerStyle]="{ 'max-width': '640px' }"
+            [containerClass]="galleriaClass()"
+          >
+            <ng-template pTemplate="item" let-item>
+              <img
+                [src]="item.itemImageSrc"
+                [ngStyle]="{
+                  width: !fullscreen ? '100%' : '',
+                  display: !fullscreen ? 'block' : ''
+                }"
+              />
+            </ng-template>
+            <ng-template pTemplate="thumbnail" let-item>
+              <div class="grid grid-nogutter justify-content-center">
+                <img [src]="item.thumbnailImageSrc" />
+              </div>
+            </ng-template>
+            <ng-template pTemplate="footer" let-item>
+              <div class="custom-galleria-footer">
+                <button
+                  type="button"
+                  pButton
+                  icon="pi pi-list"
+                  (click)="onThumbnailButtonClick()"
+                ></button>
+                <span *ngIf="images" class="title-container">
+                  <span>{{ activeIndex + 1 }}/{{ images.length }}</span>
+                  <span class="title">{{ images[activeIndex].title }}</span>
+                  <span>{{ images[activeIndex].alt }}</span>
+                </span>
+                <button
+                  type="button"
+                  pButton
+                  [icon]="fullScreenIcon()"
+                  (click)="toggleFullScreen()"
+                  class="fullscreen-button"
+                ></button>
+              </div>
+            </ng-template>
+          </p-galleria>
         </div>
-      </div>
-    </div>
-    <div class="space-y-6">
-      <h1 class="text-3xl font-bold">{{ product.displayName }}</h1>
-      <div class="flex items-center space-x-2">
-        <span *ngFor="let _ of [].constructor(5)" class="text-yellow-400"
-          >★</span
-        >
-        <span class="text-sm text-gray-500"
-          >({{ product.reviewCount }} reviews)</span
-        >
-      </div>
-      <p class="text-2xl font-bold">{{ product.priceDisplay }}</p>
-      <div class="space-y-4">
-        <div>
-          <label for="color" class="block text-sm font-medium text-gray-700"
-            >Color</label
-          >
-          <select
-            id="color"
-            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-          >
+        <!-- <div class="product-info">
+        <h1>{{ product.displayName }}</h1>
+        <div class="rating">
+          <div class="stars">
+            <span *ngFor="let star of [1, 2, 3, 4, 5]">
+              {{ star <= product.ratings ? "★" : "☆" }}
+            </span>
+          </div>
+          <span class="review-count">({{ product.reviewCount }} review)</span>
+        </div>
+        <div class="price">{{ product.priceDisplay }}</div>
+        <div class="options">
+          <label for="color" class="option-label">Color</label>
+          <select id="color" [(ngModel)]="selectedColor">
             <option
-              *ngFor="let chip of product.fmyChipList"
+              *ngFor="let chip of getChipsByType('COLOR')"
               [value]="chip.fmyChipCode"
             >
               {{ chip.fmyChipName }}
             </option>
           </select>
         </div>
-        <div>
-          <label for="quantity" class="block text-sm font-medium text-gray-700"
-            >Quantity</label
-          >
-          <input
-            type="number"
-            id="quantity"
-            [(ngModel)]="quantity"
-            min="1"
-            class="mt-1 block w-20 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-          />
+        <div class="options">
+          <label for="memory" class="option-label">Memory</label>
+          <select id="memory" [(ngModel)]="selectedMemory">
+            <option
+              *ngFor="let chip of getChipsByType('MOBILE MEMORY')"
+              [value]="chip.fmyChipCode"
+            >
+              {{ chip.fmyChipName }}
+            </option>
+          </select>
         </div>
-      </div>
-      <button
-        class="w-full bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300"
-      >
-        Add to cart
-      </button>
-      <div class="flex space-x-4">
-        <button
-          class="p-2 border rounded-md hover:bg-gray-100 transition duration-300"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-            />
-          </svg>
-        </button>
-        <button
-          class="p-2 border rounded-md hover:bg-gray-100 transition duration-300"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
-            />
-          </svg>
-        </button>
-      </div>
-      <div class="prose">
-        <h2>Description</h2>
-        <p>{{ product.displayName }} - {{ product.usp.join(", ") }}</p>
-        <ul>
-          <li *ngFor="let feature of product.keySummary">
-            {{ feature.title }}
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="mt-16">
-    <h2 class="text-2xl font-bold mb-4">You may also like</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div *ngFor="let _ of [].constructor(4)" class="space-y-2">
-        <div class="aspect-square bg-gray-200 rounded-lg overflow-hidden">
-          <img
-            src="/placeholder.svg"
-            alt="Related product"
-            class="w-full h-full object-cover"
-          />
+        <div class="options">
+          <label for="quantity" class="option-label">Quantity</label>
+          <input type="number" id="quantity" [(ngModel)]="quantity" min="1" />
         </div>
-        <h3 class="font-semibold">Related Product</h3>
-        <p class="text-sm text-gray-500">$25.00</p>
-      </div>
-    </div>
-  </div>
-</div> -->
-<div class="container">
-  <div class="product-grid">
-    <div class="product-images">
-      <img
-        [src]="product.largeUrl"
-        [alt]="product.displayName"
-        class="main-image"
-      />
-      <div class="thumbnail-container">
-        <img
-          *ngFor="let image of product.galleryImage; let i = index"
-          [src]="image"
-          [alt]="product.galleryImageAlt[i]"
-          class="thumbnail"
-          (click)="selectImage(image)"
-        />
-      </div>
-    </div>
-    <div class="product-info">
-      <h1>{{ product.displayName }}</h1>
-      <div class="rating">
-        <div class="stars">
-          <span *ngFor="let star of [1, 2, 3, 4, 5]">
-            {{ star <= product.ratings ? "★" : "☆" }}
-          </span>
+        <button class="add-to-cart" (click)="addToCart()">Add to cart</button>
+        <div class="action-buttons">
+          <button class="action-button" (click)="addToWishlist()">
+            ❤️ Wishlist
+          </button>
+          <button class="action-button" (click)="share()">🔗 Share</button>
         </div>
-        <span class="review-count">({{ product.reviewCount }} review)</span>
-      </div>
-      <div class="price">{{ product.priceDisplay }}</div>
-      <div class="options">
-        <label for="color" class="option-label">Color</label>
-        <select id="color" [(ngModel)]="selectedColor">
-          <option
-            *ngFor="let chip of getChipsByType('COLOR')"
-            [value]="chip.fmyChipCode"
-          >
-            {{ chip.fmyChipName }}
-          </option>
-        </select>
-      </div>
-      <div class="options">
-        <label for="memory" class="option-label">Memory</label>
-        <select id="memory" [(ngModel)]="selectedMemory">
-          <option
-            *ngFor="let chip of getChipsByType('MOBILE MEMORY')"
-            [value]="chip.fmyChipCode"
-          >
-            {{ chip.fmyChipName }}
-          </option>
-        </select>
-      </div>
-      <div class="options">
-        <label for="quantity" class="option-label">Quantity</label>
-        <input type="number" id="quantity" [(ngModel)]="quantity" min="1" />
-      </div>
-      <button class="add-to-cart" (click)="addToCart()">Add to cart</button>
-      <div class="action-buttons">
-        <button class="action-button" (click)="addToWishlist()">
-          ❤️ Wishlist
-        </button>
-        <button class="action-button" (click)="share()">🔗 Share</button>
-      </div>
-      <div class="description">
-        <h2>Description</h2>
-        <ul>
-          <li *ngFor="let feature of product.usp">{{ feature }}</li>
-        </ul>
+        <div class="description">
+          <h2>Description</h2>
+          <ul>
+            <li *ngFor="let feature of product.usp">{{ feature }}</li>
+          </ul>
+        </div>
+      </div> -->
       </div>
     </div>
   </div>
-  <div class="key-features">
-    <h2>Key Features</h2>
-    <div class="feature-grid">
-      <div *ngFor="let feature of product.keySummary" class="feature-item">
-        <img
-          [src]="feature.imgUrl"
-          [alt]="feature.title"
-          class="feature-icon"
-        />
-        <div class="feature-title">{{ feature.title }}</div>
+</body>
+<!-- <section class="bg-white dark:bg-gray-900">
+  <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+      <div class="mr-auto place-self-center lg:col-span-7">
+          <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+              {{ product.displayName }}
+          </h1>
+          <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+              Latest Model: {{ product.modelName }}
+          </p>
+          <a href="#" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+              Buy Now
+              <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+          </a>
+          <a href="#" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+              Learn More
+          </a> 
       </div>
-    </div>
-  </div>
-</div>
+      <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+          <img src="{{ product.largeUrl }}" alt="{{ product.displayName }}" class="object-cover h-full" style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%);">
+      </div>                
+    </div> 
+    </section>
+    
+    -->

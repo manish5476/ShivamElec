@@ -1,1 +1,232 @@
-<p>user-master works!</p>
+<div class="p-fluid">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <!-- Monthly Price Info -->
+    <h3>Monthly Price Info</h3>
+    <div formGroupName="monthlyPriceInfo">
+      <div class="p-field">
+        <label for="leasingUpfront">Leasing Upfront</label>
+        <input
+          id="leasingUpfront"
+          pInputText
+          formControlName="leasingUpfront"
+        />
+      </div>
+      <div class="p-field">
+        <label for="leasingMonthly">Leasing Monthly</label>
+        <input
+          id="leasingMonthly"
+          pInputText
+          formControlName="leasingMonthly"
+        />
+      </div>
+      <div class="p-field">
+        <label for="leasingMonths">Leasing Months</label>
+        <input id="leasingMonths" pInputText formControlName="leasingMonths" />
+      </div>
+      <div class="p-field">
+        <label for="interest">Interest</label>
+        <input id="interest" pInputText formControlName="interest" />
+      </div>
+    </div>
+
+    <!-- Product Info -->
+    <h3>Product Info</h3>
+    <div class="p-field">
+      <label for="modelCode">Model Code</label>
+      <input id="modelCode" pInputText formControlName="modelCode" />
+    </div>
+    <div class="p-field">
+      <label for="modelName">Model Name</label>
+      <input id="modelName" pInputText formControlName="modelName" />
+    </div>
+    <div class="p-field">
+      <label for="displayName">Display Name</label>
+      <input id="displayName" pInputText formControlName="displayName" />
+    </div>
+    <div class="p-field">
+      <label for="thumbUrl">Thumbnail URL</label>
+      <input id="thumbUrl" pInputText formControlName="thumbUrl" />
+    </div>
+    <div class="p-field">
+      <label for="thumbUrlAlt">Thumbnail Alt</label>
+      <input id="thumbUrlAlt" pInputText formControlName="thumbUrlAlt" />
+    </div>
+    <div class="p-field">
+      <label for="largeUrl">Large URL</label>
+      <input id="largeUrl" pInputText formControlName="largeUrl" />
+    </div>
+
+    <!-- Gallery Images (Dynamic) -->
+    <h3>Gallery Images</h3>
+    <div formArrayName="galleryImage">
+      <div *ngFor="let imgCtrl of galleryImage.controls; let i = index">
+        <div class="p-field">
+          <label for="galleryImage-{{ i }}">Image {{ i + 1 }}</label>
+          <input id="galleryImage-{{ i }}" pInputText [formControlName]="i" />
+        </div>
+      </div>
+      <button
+        pButton
+        label="Add Image"
+        type="button"
+        icon="pi pi-plus"
+        (click)="addGalleryImage()"
+      ></button>
+    </div>
+
+    <!-- Gallery Image Alt (Dynamic) -->
+    <h3>Gallery Image Alt</h3>
+    <div formArrayName="galleryImageAlt">
+      <div *ngFor="let altCtrl of galleryImageAlt.controls; let i = index">
+        <div class="p-field">
+          <label for="galleryImageAlt-{{ i }}">Alt Text {{ i + 1 }}</label>
+          <input
+            id="galleryImageAlt-{{ i }}"
+            pInputText
+            [formControlName]="i"
+          />
+        </div>
+      </div>
+      <button
+        pButton
+        label="Add Alt Text"
+        type="button"
+        icon="pi pi-plus"
+        (click)="addGalleryImageAlt()"
+      ></button>
+    </div>
+
+    <!-- Ratings -->
+    <h3>Ratings</h3>
+    <div class="p-field">
+      <label for="ratingsAverage">Average Rating</label>
+      <input id="ratingsAverage" pInputText formControlName="ratingsAverage" />
+    </div>
+    <div class="p-field">
+      <label for="ratingsCount">Ratings Count</label>
+      <input id="ratingsCount" pInputText formControlName="ratingsCount" />
+    </div>
+    <div class="p-field">
+      <label for="reviewUrl">Review URL</label>
+      <input id="reviewUrl" pInputText formControlName="reviewUrl" />
+    </div>
+
+    <!-- Chip List (Dynamic) -->
+    <h3>Chip List</h3>
+    <div formArrayName="fmyChipList">
+      <div
+        *ngFor="let chipCtrl of fmyChipList.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <div class="p-field">
+          <label for="chipType-{{ i }}">Chip Type {{ i + 1 }}</label>
+          <input
+            id="chipType-{{ i }}"
+            pInputText
+            formControlName="fmyChipType"
+          />
+        </div>
+        <div class="p-field">
+          <label for="chipName-{{ i }}">Chip Name {{ i + 1 }}</label>
+          <input
+            id="chipName-{{ i }}"
+            pInputText
+            formControlName="fmyChipName"
+          />
+        </div>
+      </div>
+      <button
+        pButton
+        label="Add Chip"
+        type="button"
+        icon="pi pi-plus"
+        (click)="addFmyChip()"
+      ></button>
+    </div>
+
+    <!-- Key Summary (Dynamic) -->
+    <h3>Key Summary</h3>
+    <div formArrayName="keySummary">
+      <div
+        *ngFor="let summaryCtrl of keySummary.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <div class="p-field">
+          <label for="summaryDisplayType-{{ i }}"
+            >Display Type {{ i + 1 }}</label
+          >
+          <input
+            id="summaryDisplayType-{{ i }}"
+            pInputText
+            formControlName="displayType"
+          />
+        </div>
+      </div>
+      <button
+        pButton
+        label="Add Key Summary"
+        type="button"
+        icon="pi pi-plus"
+        (click)="addKeySummary()"
+      ></button>
+    </div>
+
+    <!-- Additional Fields -->
+    <h3>Additional Fields</h3>
+    <div class="p-field">
+      <label for="Mobile">PVI Type Name</label>
+      <input id="pviTypeName" pInputText formControlName="pviTypeName" />
+    </div>
+    <div class="p-field">
+      <label for="smartphone">PVI Subtype Name</label>
+      <input id="pviSubtypeName" pInputText formControlName="pviSubtypeName" />
+    </div>
+
+    <!-- Boolean Fields -->
+    <div class="p-field-checkbox">
+      <p-checkbox
+        formControlName="selected"
+        binary="true"
+        label="Selected"
+      ></p-checkbox>
+    </div>
+    <div class="p-field-checkbox">
+      <p-checkbox
+        formControlName="configuratorUseYn"
+        binary="true"
+        label="Configurator Use"
+      ></p-checkbox>
+    </div>
+    <div class="p-field-checkbox">
+      <p-checkbox
+        formControlName="specCompareYN"
+        binary="true"
+        label="Spec Compare"
+      ></p-checkbox>
+    </div>
+    <div class="p-field-checkbox">
+      <p-checkbox
+        formControlName="isComingSoon"
+        binary="true"
+        label="Coming Soon"
+      ></p-checkbox>
+    </div>
+    <div class="p-field-checkbox">
+      <p-checkbox
+        formControlName="packageYN"
+        binary="true"
+        label="Package"
+      ></p-checkbox>
+    </div>
+
+    <!-- Submit Button -->
+    <button pButton label="Submit" icon="pi pi-check" type="submit"></button>
+    <button
+      pButton
+      label="Reset"
+      icon="pi pi-refresh"
+      type="button"
+      (click)="resetForm()"
+    ></button>
+  </form>
+</div>

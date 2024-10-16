@@ -1,0 +1,61 @@
+.p-fluid {
+  max-width: 1200px; /* Controls the overall width of the form */
+  margin: 0 auto; /* Centers the form on the page */
+  padding: 1rem; /* Adds padding around the form */
+  box-sizing: border-box;
+}
+
+.p-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem; /* Adds space between fields */
+}
+
+.p-field label {
+  margin-bottom: 0.5rem; /* Adds space between label and input */
+}
+
+.p-field input,
+.p-field-checkbox {
+  width: 100%; /* Makes sure inputs take the full width of the container */
+  max-width: 400px; /* Sets a max width for better alignment */
+}
+
+.p-field-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Adds spacing between checkbox and label */
+}
+
+h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #007ad9; /* Makes headers more prominent */
+}
+
+/* For the dynamic forms */
+formArrayName .p-field {
+  margin-bottom: 1.5rem;
+}
+
+/* Button styling */
+button.p-button {
+  margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .p-field {
+    flex-direction: column; /* Ensure single column on smaller screens */
+  }
+
+  .p-field input,
+  .p-field-checkbox {
+    max-width: 100%; /* Ensure inputs take full width on mobile */
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+}

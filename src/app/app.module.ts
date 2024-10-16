@@ -3,17 +3,17 @@ import { UserMasterComponent } from '../component/user-master/user-master.compon
 import { ProductDetaiViewComponent } from '../component/product-detai-view/product-detai-view.component';
 import { ImageTabsComponent } from '../tabs/image-tabs/image-tabs.component';
 import { HomeComponent } from '../component/home/home.component';
-
 import { NgModule } from '@angular/core';
 import { GalleriaModule } from 'primeng/galleria';
 import {
   BrowserModule,
   provideClientHydration,
 } from '@angular/platform-browser';
+
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { ButtonModule } from 'primeng/button';
@@ -29,7 +29,13 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { Sidebar } from 'primeng/sidebar';
 import { RatingModule } from 'primeng/rating';
 import { InputNumberModule } from 'primeng/inputnumber';
-
+import { ComponentsModule } from '../component/components.module';
+// import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { CheckboxModule } from 'primeng/checkbox';
+import { DockModule } from 'primeng/dock';
+import { CommonModule } from '@angular/common';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { MenubarModule } from 'primeng/menubar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +46,13 @@ import { InputNumberModule } from 'primeng/inputnumber';
     HomeComponent,
   ],
   imports: [
+    MenubarModule,
+    RadioButtonModule,
+    CommonModule,
+    DockModule,
+    CheckboxModule,
+    ReactiveFormsModule,
+    ComponentsModule,
     InputNumberModule,
     CalendarModule,
     RatingModule,

@@ -6,34 +6,8 @@ import { catchError, Observable, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class APIServicesService {
-  // createProduct(payload: {
-  //   tags: string[];
-  //   images: string[];
-  //   reviews: { user: string; rating: number; comment: string; date: Date }[];
-  //   id: string;
-  //   title: string;
-  //   description: string;
-  //   category: string;
-  //   price: number;
-  //   discountPercentage: number;
-  //   rating: number;
-  //   stock: number;
-  //   brand: string;
-  //   sku: string;
-  //   weight: number;
-  //   features: string[];
-  //   dimensions: { width: number; height: number; depth: number };
-  //   warrantyInformation: string;
-  //   shippingInformation: string;
-  //   availabilityStatus: string;
-  //   returnPolicy: string;
-  //   minimumOrderQuantity: number;
-  //   meta: { createdAt: Date; updatedAt: Date; barcode: string; qrCode: string };
-  //   thumbnail: string;
-  // }) {
-  //   throw new Error('Method not implemented.');
-  // }
   private apiUrl = 'http://localhost:4000/api/v1/Product';
+  // private apiUrl="https://raw.githubusercontent.com/manish5476/shivamelecdata/refs/heads/main/product.json"
   constructor(private http: HttpClient) {} // Use HttpClient here
   createProduct(product: any) {
     return this.http.post(this.apiUrl, product).pipe(

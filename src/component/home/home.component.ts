@@ -29,7 +29,6 @@ interface Theme {
 })
 export class HomeComponent {
   shopName = 'shivam Electronics';
-  navItems = ['Home', 'Shop', 'Pages', 'About', 'Blog', 'Contact'];
 
   featuredProduct = {
     name: 'Shivam Electronics',
