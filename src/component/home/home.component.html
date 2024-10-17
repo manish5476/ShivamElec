@@ -1,29 +1,456 @@
-<header>
-  <div class="logo">{{ shopName }}</div>
+<main class="pt-16">
+  <!-- Hero 1: Discover -->
+  <section
+    id="hero1"
+    class="min-h-screen flex items-center justify-center bg-cover bg-center relative overflow-hidden"
+    style="background-image: url('/placeholder.svg?height=1080&width=1920')"
+  >
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
+      <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+        Discover
+        <span class="text-motion" id="hero1-text-motion">
+          <span>Cutting-Edge</span>
+        </span>
+        Electronics
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-200 mb-10">
+        Explore the latest gadgets and tech innovations for your connected
+        lifestyle
+      </p>
+      <div
+        class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4"
+      >
+        <a
+          href="#"
+          class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105"
+          >Start Shopping</a
+        >
+        <a
+          href="#"
+          class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105"
+          >Learn More</a
+        >
+      </div>
+    </div>
+    <div
+      class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent"
+    ></div>
+  </section>
 
-  <div class="header-icons">
-    <button class="icon-button"><i class="material-icons">search</i></button>
-    <button class="icon-button"><i class="material-icons">person</i></button>
-    <button class="icon-button">
-      <i class="material-icons">shopping_cart</i>
-    </button>
-    <!-- <select (change)="applyTheme($event.target.value)">
-      <option *ngFor="let theme of themes" [value]="theme">
-        {{ theme.name }}
-      </option>
-    </select> -->
-  </div>
-</header>
-
-<main>
-  <section class="hero">
-    <div class="hero-content">
-      <h1 style="color: rgb(229, 130, 0)">{{ featuredProduct.name }}</h1>
-      <div class="rating">
-        <span class="reviews">{{ featuredProduct.reviews }}</span>
+  <!-- Hero 2: Create -->
+  <section
+    id="hero2"
+    class="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 py-20"
+  >
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col lg:flex-row items-center justify-between">
+        <div class="lg:w-1/2 mb-10 lg:mb-0">
+          <h2
+            class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
+          >
+            Create Your
+            <span class="text-motion" id="hero2-text-motion">
+              <span>Smart Home</span>
+            </span>
+          </h2>
+          <p class="text-xl text-gray-100 mb-8">
+            Transform your living space with our cutting-edge smart home devices
+          </p>
+          <div
+            class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+          >
+            <a
+              href="#"
+              class="bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 text-center"
+              >Shop Devices</a
+            >
+            <a
+              href="#"
+              class="border-2 border-white text-white hover:bg-white hover:text-blue-600 font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 text-center"
+              >Watch Demo</a
+            >
+          </div>
+        </div>
+        <div class="lg:w-1/2">
+          <div class="grid grid-cols-2 gap-4">
+            <div
+              class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300"
+            >
+              <i data-feather="home" class="w-12 h-12 text-blue-500 mb-4"></i>
+              <h3 class="text-xl font-semibold mb-2">Smart Speakers</h3>
+              <p class="text-gray-600">Control your home with voice commands</p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300"
+            >
+              <i
+                data-feather="thermometer"
+                class="w-12 h-12 text-purple-500 mb-4"
+              ></i>
+              <h3 class="text-xl font-semibold mb-2">Smart Thermostats</h3>
+              <p class="text-gray-600">Optimize your home's temperature</p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300"
+            >
+              <i data-feather="video" class="w-12 h-12 text-blue-500 mb-4"></i>
+              <h3 class="text-xl font-semibold mb-2">Security Cameras</h3>
+              <p class="text-gray-600">Monitor your home from anywhere</p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300"
+            >
+              <i data-feather="zap" class="w-12 h-12 text-purple-500 mb-4"></i>
+              <h3 class="text-xl font-semibold mb-2">Smart Lighting</h3>
+              <p class="text-gray-600">Set the perfect ambiance instantly</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- Hero 3: Inspire -->
+  <section
+    id="hero3"
+    class="min-h-screen relative overflow-hidden bg-gray-900 py-20"
+  >
+    <div class="absolute inset-0 z-0 opacity-20">
+      <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4">
+        <img
+          src="/placeholder.svg?height=300&width=300"
+          alt="Tech 1"
+          class="w-full h-40 object-cover rounded-lg"
+        />
+        <img
+          src="/placeholder.svg?height=300&width=300"
+          alt="Tech 2"
+          class="w-full h-40 object-cover rounded-lg"
+        />
+        <img
+          src="/placeholder.svg?height=300&width=300"
+          alt="Tech 3"
+          class="w-full h-40 object-cover rounded-lg"
+        />
+        <img
+          src="/placeholder.svg?height=300&width=300"
+          alt="Tech 4"
+          class="w-full h-40 object-cover rounded-lg"
+        />
+        <img
+          src="/placeholder.svg?height=300&width=300"
+          alt="Tech 5"
+          class="w-full h-40 object-cover rounded-lg"
+        />
+        <img
+          src="/placeholder.svg?height=300&width=300"
+          alt="Tech 6"
+          class="w-full h-40 object-cover rounded-lg"
+        />
+        <img
+          src="/placeholder.svg?height=300&width=300"
+          alt="Tech 7"
+          class="w-full h-40 object-cover rounded-lg"
+        />
+        <img
+          src="/placeholder.svg?height=300&width=300"
+          alt="Tech 8"
+          class="w-full h-40 object-cover rounded-lg"
+        />
+        <img
+          src="/placeholder.svg?height=300&width=300"
+          alt="Tech 9"
+          class="w-full h-40 object-cover rounded-lg"
+        />
+        <img
+          src="/placeholder.svg?height=300&width=300"
+          alt="Tech 10"
+          class="w-full h-40 object-cover rounded-lg"
+        />
+      </div>
+    </div>
+    <div class="relative z-10 container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2
+          class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
+        >
+          <span class="text-motion" id="hero3-text-motion">
+            <span>Inspire</span>
+          </span>
+          Innovation
+        </h2>
+        <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+          Discover how our customers are using technology to transform their
+          lives and businesses
+        </p>
+        <a
+          href="#"
+          class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 inline-block"
+          >Explore Stories</a
+        >
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+        >
+          <img
+            src="/placeholder.svg?height=400&width=600"
+            alt="Smart Home Setup"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">
+              Sarah's Smart Home Revolution
+            </h3>
+            <p class="text-gray-600 mb-4">
+              How Sarah automated her entire home for convenience and energy
+              savings
+            </p>
+            <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold"
+              >Read More</a
+            >
+          </div>
+        </div>
+        <div
+          class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+        >
+          <img
+            src="/placeholder.svg?height=400&width=600"
+            alt="Home Office Setup"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">
+              Mike's Productive Home Office
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Exploring Mike's tech-driven workspace for maximum efficiency
+            </p>
+            <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold"
+              >Read More</a
+            >
+          </div>
+        </div>
+        <div
+          class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+        >
+          <img
+            src="/placeholder.svg?height=400&width=600"
+            alt="Gaming Setup"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">
+              Emma's Ultimate Gaming Rig
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Inside Emma's high-performance gaming setup and streaming studio
+            </p>
+            <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold"
+              >Read More</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-white mt-8 py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h4 class="text-xl font-semibold mb-4">Shop</h4>
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="#"
+              class="text-gray-600 hover:text-blue-600 transition duration-300"
+              >Smartphones</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-gray-600 hover:text-blue-600 transition duration-300"
+              >Laptops</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-gray-600 hover:text-blue-600 transition duration-300"
+              >Smart Home</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xl font-semibold mb-4">Support</h4>
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="#"
+              class="text-gray-600 hover:text-blue-600 transition duration-300"
+              >Contact Us</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-gray-600 hover:text-blue-600 transition duration-300"
+              >FAQs</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-gray-600 hover:text-blue-600 transition duration-300"
+              >Warranty Info</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xl font-semibold mb-4">Company</h4>
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="#"
+              class="text-gray-600 hover:text-blue-600 transition duration-300"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-gray-600 hover:text-blue-600 transition duration-300"
+              >Careers</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-gray-600 hover:text-blue-600 transition duration-300"
+              >Blog</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xl font-semibold mb-4">Connect</h4>
+        <div class="flex space-x-4">
+          <a
+            href="#"
+            class="text-gray-400 hover:text-blue-600 transition duration-300"
+          >
+            <i data-feather="facebook" class="w-6 h-6"></i>
+          </a>
+          <a
+            href="#"
+            class="text-gray-400 hover:text-blue-600 transition duration-300"
+          >
+            <i data-feather="twitter" class="w-6 h-6"></i>
+          </a>
+          <a
+            href="#"
+            class="text-gray-400 hover:text-blue-600 transition duration-300"
+          >
+            <i data-feather="instagram" class="w-6 h-6"></i>
+          </a>
+          <a
+            href="#"
+            class="text-gray-400 hover:text-blue-600 transition duration-300"
+          >
+            <i data-feather="linkedin" class="w-6 h-6"></i>
+          </a>
+        </div>
+        <div class="mt-4">
+          <h5 class="text-lg font-semibold mb-2">
+            Subscribe to our newsletter
+          </h5>
+          <form class="flex">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="bg-gray-100 text-gray-800 px-4 py-2 rounded-l-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+              type="submit"
+              class="bg-blue-600 text-white px-4 py-2 rounded-r-full hover:bg-blue-700 transition duration-300"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 pt-8 border-t border-gray-200 text-center">
+      <p>&copy; 2024 Shivem Electronics. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<div class="pagination-controls">
+  <p-button
+    label="Previous"
+    (click)="onPageChange(currentPage - 1)"
+    [disabled]="currentPage <= 1"
+    styleClass="mr-2"
+  ></p-button>
+  <span>Page {{ currentPage }}</span>
+  <p-button
+    label="Next"
+    (click)="onPageChange(currentPage + 1)"
+    [disabled]="currentPage >= totalItems / pageSize"
+    styleClass="ml-2"
+  ></p-button>
+
+  <p-dropdown
+    [options]="pageSizeOptions"
+    (onChange)="onPageSizeChange($event.value)"
+    [appendTo]="'body'"
+    placeholder="Select Page Size"
+    styleClass="ml-2"
+  ></p-dropdown>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////////// -->
+
+<main>
+  <div>
+    <h1>Product List</h1>
+    <input
+      type="text"
+      pInputText
+      placeholder="Filter by Model Code..."
+      (input)="onFilterChange('modelCode', $event)"
+      styleClass="w-full mb-3"
+    />
+
+    <input
+      type="text"
+      pInputText
+      placeholder="Filter by Model Name..."
+      (input)="onFilterChange('modelName', $event)"
+      styleClass="w-full mb-3"
+    />
+
+    <input
+      type="text"
+      pInputText
+      placeholder="Filter by Display Name..."
+      (input)="onFilterChange('displayName', $event)"
+      styleClass="w-full mb-3"
+    />
+
+    <!-- Sort Dropdown using PrimeNG Dropdown -->
+    <p-dropdown
+      [options]="sortOptions"
+      placeholder="Select Sort"
+      (onChange)="onSortChange($event)"
+      styleClass="mb-3"
+    ></p-dropdown>
+  </div>
 
   <section class="product-grid">
     <h2>Explore our Products</h2>
@@ -84,7 +511,32 @@
     <p>&copy; 2023 {{ shopName }}. All rights reserved.</p>
   </div>
 </footer>
+<!--  -->
+<!-- <div class="pagination-controls">
+  <p-button
+    label="Previous"
+    (click)="onPageChange(currentPage - 1)"
+    [disabled]="currentPage <= 1"
+    styleClass="mr-2"
+  ></p-button>
+  <span>Page {{ currentPage }}</span>
+  <p-button
+    label="Next"
+    (click)="onPageChange(currentPage + 1)"
+    [disabled]="currentPage >= totalItems / pageSize"
+    styleClass="ml-2"
+  ></p-button>
 
+  <p-dropdown
+    [options]="pageSizeOptions"
+    (onChange)="onPageSizeChange($event.value)"
+    [appendTo]="'body'"
+    placeholder="Select Page Size"
+    styleClass="ml-2"
+  ></p-dropdown>
+</div> -->
+
+<!--  -->
 <p-dialog
   maskStyleClass="backdrop-blur-sm"
   styleClass="!border-0 !bg-transparent"
@@ -102,4 +554,5 @@
     ></app-product-detai-view>
   </ng-container>
 </p-dialog>
+
 <router-outlet />

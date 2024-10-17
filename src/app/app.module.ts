@@ -36,6 +36,7 @@ import { DockModule } from 'primeng/dock';
 import { CommonModule } from '@angular/common';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { MenubarModule } from 'primeng/menubar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { MenubarModule } from 'primeng/menubar';
   ],
   imports: [
     MenubarModule,
+    InputTextModule,
     RadioButtonModule,
     CommonModule,
     DockModule,
