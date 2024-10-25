@@ -1,21 +1,13 @@
 <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
   <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
     <a href="#" class="text-blue-600 font-bold text-3xl">Shivem Electronics</a>
-    <div class="hidden md:flex space-x-6">
+    <div class="hidden md:flex space-x-6" *ngFor="let item of items">
       <a
-        href="#hero1"
-        class="text-gray-600 hover:text-blue-600 transition duration-300"
-        >Discover</a
-      >
-      <a
-        href="#hero2"
-        class="text-gray-600 hover:text-blue-600 transition duration-300"
-        >Create</a
-      >
-      <a
-        href="#hero3"
-        class="text-gray-600 hover:text-blue-600 transition duration-300"
-        >Inspire</a
+        pRipple
+        class="flex align-items-center p-menuitem-link"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        >{{ item.label }}</a
       >
     </div>
     <div class="flex items-center space-x-4">
@@ -32,64 +24,7 @@
     </div>
   </nav>
 </header>
-<div class="card">
-  <p-menubar [model]="items">
-    <ng-template pTemplate="start">
-      <svg
-        width="33"
-        height="35"
-        viewBox="0 0 33 35"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M15.1934 0V0V0L0.0391235 5.38288L2.35052 25.3417L15.1934 32.427V32.427V32.427L28.0364 25.3417L30.3478 5.38288L15.1934 0Z"
-          fill="var(--primary-color)"
-        />
-      </svg>
-    </ng-template>
-    <ng-template pTemplate="item" let-item let-root="root">
-      <a
-        pRipple
-        class="flex align-items-center p-menuitem-link"
-        [routerLink]="item.path"
-        routerLinkActive="active"
-      >
-        <span [class]="item.icon"></span>
-        <span class="ml-2">{{ item.label }}</span>
-        <!-- Optionally display badge and shortcut -->
-        <span
-          *ngIf="item.shortcut"
-          class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1"
-        >
-          {{ item.shortcut }}
-        </span>
-        <i
-          *ngIf="item.items"
-          [ngClass]="[
-            'pi',
-            root ? 'pi-angle-down ml-2' : 'pi-angle-right ml-auto'
-          ]"
-        ></i>
-      </a>
-    </ng-template>
-
-    <ng-template pTemplate="end">
-      <div class="flex align-items-center gap-2">
-        <input
-          type="text"
-          pInputText
-          placeholder="Search"
-          class="w-8rem sm:w-auto"
-        />
-        <p-avatar
-          image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-          shape="circle"
-        />
-      </div>
-    </ng-template>
-  </p-menubar>
-</div>
+<div class="card"></div>
 
 <!--  -->
 <!-- <nav>
@@ -105,3 +40,44 @@
 <!-- <app-user-master></app-user-master>
 <app-home></app-home> -->
 <router-outlet />
+<!-- <p-menubar [model]="items">
+  <ng-template pTemplate="item" let-item let-root="root">
+    <a
+      pRipple
+      class="flex align-items-center p-menuitem-link"
+      [routerLink]="item.path"
+      routerLinkActive="active"
+    >
+      <span [class]="item.icon"></span>
+      <span class="ml-2">{{ item.label }}</span>
+      <span
+        *ngIf="item.shortcut"
+        class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1"
+      >
+        {{ item.shortcut }}
+      </span>
+      <i
+        *ngIf="item.items"
+        [ngClass]="[
+          'pi',
+          root ? 'pi-angle-down ml-2' : 'pi-angle-right ml-auto'
+        ]"
+      ></i>
+    </a>
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <div class="flex align-items-center gap-2">
+      <input
+        type="text"
+        pInputText
+        placeholder="Search"
+        class="w-8rem sm:w-auto"
+      />
+      <p-avatar
+        image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+        shape="circle"
+      />
+    </div>
+  </ng-template>
+</p-menubar> -->

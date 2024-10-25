@@ -7,12 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ShivamElec';
-  navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'User Master', path: '/user-master' },
-    { name: 'Product Detail', path: '/product-detail' },
-    { name: 'Product Master', path: '/product-master' },
-  ];
+  // navItems = [
+  //   { name: 'Home', path: '/' },
+  //   { name: 'User Master', path: '/user-master' },
+  //   { name: 'Product Detail', path: '/product-detail' },
+  //   { name: 'Product Master', path: '/product-master' },
+  // ];
   items: any[] = [];
 
   ngOnInit() {

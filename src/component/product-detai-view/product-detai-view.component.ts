@@ -20,6 +20,7 @@ import { Galleria, GalleriaModule } from 'primeng/galleria';
 })
 export class ProductDetaiViewComponent implements OnInit {
   @Input() data: any;
+  @ViewChild('galleria') galleria: Galleria | undefined;
   responsiveOptions: any[] = [
     {
       breakpoint: '1024px',
@@ -39,14 +40,9 @@ export class ProductDetaiViewComponent implements OnInit {
   selectedColor: any;
   selectedMemory: any;
   showThumbnails: boolean | undefined;
-
   fullscreen: boolean = false;
-
   activeIndex: number = 0;
-
   onFullScreenListener: any;
-
-  @ViewChild('galleria') galleria: Galleria | undefined;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,

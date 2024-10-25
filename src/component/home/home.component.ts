@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { APIServicesService } from '../../Services/apiservices.service';
 interface ProductFilter {
   modelCode?: string;
@@ -75,6 +75,7 @@ export class HomeComponent {
   ];
 
   pageSizeOptions = [
+    { label: '12', value: 12 },
     { label: '10', value: 10 },
     { label: '20', value: 20 },
     { label: '50', value: 50 },
@@ -86,25 +87,28 @@ export class HomeComponent {
   constructor(private api: APIServicesService) {}
 
   ngOnInit() {
-    this.textMotion('hero1-text-motion', [
-      'Cutting-Edge',
-      'Innovative',
-      'Smart',
-      'Advanced',
-    ]);
-    this.textMotion('hero2-text-motion', [
-      'Smart Home',
-      'Tech Haven',
-      'IoT Paradise',
-      'Connected Life',
-    ]);
-    this.textMotion('hero3-text-motion', [
-      'Inspire',
-      'Empower',
-      'Transform',
-      'Innovate',
-    ]);
+    // this.textMotion('hero1-text-motion', [
+    //   'Cutting-Edge',
+    //   'Innovative',
+    //   'Smart',
+    //   'Advanced',
+    // ]);
+    // this.textMotion('hero2-text-motion', [
+    //   'Smart Home',
+    //   'Tech Haven',
+    //   'IoT Paradise',
+    //   'Connected Life',
+    // ]);
+    // this.textMotion('hero3-text-motion', [
+    //   'Inspire',
+    //   'Empower',
+    //   'Transform',
+    //   'Innovate',
+    // ]);
     this.getData(); // Fetch initial data
+  }
+  playNextVideo(nextVideo: ElementRef<HTMLVideoElement>) {
+    nextVideo.nativeElement.play();
   }
   textMotion(elementId: string, words: string[]): void {
     const element = document.getElementById(elementId);
@@ -153,18 +157,12 @@ export class HomeComponent {
     const target = event.target as HTMLInputElement;
     (this.filter as any)[key] = target.value; // Update the specific filter key
 
-    // If the value is empty, you might want to remove that filter key
     if (!target.value) {
       delete this.filter[key];
     }
 
     this.getData(); // Fetch data with the new filter
   }
-  // onFilterChange(event: Event) {
-  //   const target = event.target as HTMLInputElement; // Type assertion
-  //   this.filter = target.value; // Set the new filter
-  //   this.getData(); // Fetch data with the new filter
-  // }
 
   onSortChange(event: any) {
     this.sort = event.value; // Set the new sort
@@ -187,22 +185,3 @@ export class HomeComponent {
     this.singleProduct = product;
   }
 }
-// //
-// toggle: boolean = false;
-// singleProduct: any;
-
-//   this.currentTheme = this.themes[0]; // Set default theme
-// this.applyTheme(this.currentTheme);
-// }
-
-// getData() {
-//   this.api.getProducts().subscribe((res: any) => {
-//     this.data = res.data.products;
-//   });
-//   console.log(this.data);
-// }
-// ProductPreview(product: any) {
-//   this.toggle = !this.toggle;
-//   this.singleProduct = product;
-// }
-// }

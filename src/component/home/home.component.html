@@ -5,15 +5,27 @@
     class="min-h-screen flex items-center justify-center bg-cover bg-center relative overflow-hidden"
     style="background-image: url('/placeholder.svg?height=1080&width=1920')"
   >
+    <video
+      class="absolute top-0 left-0 w-full h-full object-cover"
+      autoplay
+      loop
+      muted
+      playsinline
+    >
+      <source
+        src="https://images.samsung.com/in/smartphones/galaxy-s24-ultra/videos/galaxy-s24-ultra-highlights-form-factor.webm?imbypass=true"
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
+    </video>
     <div class="absolute inset-0 bg-black opacity-50"></div>
     <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
-      <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-        Discover
-        <span class="text-motion" id="hero1-text-motion">
-          <span>Cutting-Edge</span>
-        </span>
-        Electronics
+      <h1
+        class="text-5xl md:text-7xl font-bold text-gray-600 mb-6 leading-tight border-b-2 border-orange-400 pb-2"
+      >
+        Discover Cutting-Edge Electronics
       </h1>
+
       <p class="text-xl md:text-2xl text-gray-200 mb-10">
         Explore the latest gadgets and tech innovations for your connected
         lifestyle
@@ -22,7 +34,6 @@
         class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4"
       >
         <a
-          href="#"
           class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105"
           >Start Shopping</a
         >
@@ -42,22 +53,27 @@
   <section
     id="hero2"
     class="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 py-20"
+    style="
+      background-image: url('https://in-exstatic-vivofs.vivo.com/gdHFRinHEMrj3yPG/product/1728643023900/zip/img/webp/vivo-v40-pro-with-professional-portrait-cameras-in.jpg.webp');
+    "
   >
     <div class="container mx-auto px-4">
-      <div class="flex flex-col lg:flex-row items-center justify-between">
+      <div
+        class="min-h-screen flex items-center justify-center bg-cover bg-center relative overflow-hidden"
+      >
+        <!-- <div class="flex flex-col lg:flex-row items-center justify-between"> -->
         <div class="lg:w-1/2 mb-10 lg:mb-0">
           <h2
+            style="color: rgb(186 230 253)"
             class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
           >
-            Create Your
-            <span class="text-motion" id="hero2-text-motion">
-              <span>Smart Home</span>
-            </span>
+            Create Your Smart Home
           </h2>
-          <p class="text-xl text-gray-100 mb-8">
+          <p style="color: rgb(186 230 253)" class="text-xl text-gray-100 mb-8">
             Transform your living space with our cutting-edge smart home devices
           </p>
           <div
+            style="color: rgb(186 230 253)"
             class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
           >
             <a
@@ -73,7 +89,7 @@
           </div>
         </div>
         <div class="lg:w-1/2">
-          <div class="grid grid-cols-2 gap-4">
+          <!-- <div class="grid grid-cols-2 gap-4">
             <div
               class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300"
             >
@@ -105,26 +121,137 @@
               <h3 class="text-xl font-semibold mb-2">Smart Lighting</h3>
               <p class="text-gray-600">Set the perfect ambiance instantly</p>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
   </section>
+  <!--  -->
+  <section class="py-16 bg-gray-900 py-20">
+    <div class="container mx-auto px-4">
+      <video
+        class="absolute top-0 left-0 w-full h-full object-cover"
+        autoplay
+        loop
+        muted
+        playsinline
+      >
+        <source
+          src="https://image01.realme.net/general/20241016/1729067648767af078faff9ce4b9496a65a8b34f6544e.mp4?type=video/mp4"
+          type="video/mp4"
+        />
+      </video>
+      <h2 class="text-4xl font-bold text-center text-white mb-8">
+        Featured Smartphones
+      </h2>
+      <!--  -->
+      <!-- <div class="flex justify-center space-x-8 mb-12">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Vivo_Logo.svg/1200px-Vivo_Logo.svg.png?20180410034342"
+          alt="VIVO"
+          class="h-12 w-auto"
+        />
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Realme_logo.svg/1200px-Realme_logo.svg.png?20230228121816"
+          alt="Realme"
+          class="h-12 w-auto"
+        />
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/1200px-Samsung_Logo.svg.png?20221128191222"
+          alt="Samsung"
+          class="h-12 w-auto"
+        />
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/OP_LU_Reg_1L_RGB_red_copy-01.svg/768px-OP_LU_Reg_1L_RGB_red_copy-01.svg.png?20200402202340"
+          alt="OnePlus"
+          class="h-12 w-auto"
+        />
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/768px-Xiaomi_logo_%282021-%29.svg.png?20221112002517"
+          alt="Xiaomi"
+          class="h-12 w-auto"
+        />
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/OPPO_LOGO.jpg/1200px-OPPO_LOGO.jpg?20210219105446"
+          alt="Oppo"
+          class="h-12 w-auto"
+        />
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/758px-Apple_logo_grey.svg.png?20220821122206"
+          alt="Apple"
+          class="h-12 w-auto"
+        />
+      </div> -->
+      <h3 class="text-2xl font-semibold text-center text-white mb-6">
+        New Releases
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div
+          class="bg-gray-800 text-slate-100 rounded-lg p-4 shadow-md"
+          *ngFor="let product of data"
+        >
+          <img
+            [src]="product.largeUrl"
+            alt="{{ product.displayName }}"
+            class="w-full h-48 object-cover rounded-lg mb-4"
+          />
+          <h4 class="font-semibold text-lg mb-2">{{ product.displayName }}</h4>
 
+          <p-button
+            class="text-gray-600"
+            class="add-to-cart"
+            (onClick)="ProductPreview(product)"
+            label="Show Product"
+          />
+        </div>
+      </div>
+
+      <div
+        class="pagination-controls flex items-center justify-center mt-8 space-x-4"
+      >
+        <!-- Previous Button -->
+        <button
+          class="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-300 disabled:cursor-not-allowed"
+          [disabled]="currentPage <= 1"
+          (click)="onPageChange(currentPage - 1)"
+        >
+          Previous
+        </button>
+
+        <!-- Next Button -->
+        <button
+          class="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-300 disabled:cursor-not-allowed"
+          [disabled]="currentPage >= totalItems / pageSize"
+          (click)="onPageChange(currentPage + 1)"
+        >
+          Next
+        </button>
+
+        <!-- <p-dropdown
+          class="block w-full px-4 py-2 text-sm border border-gray-300 rounded-md bg-grey focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          [options]="pageSizeOptions"
+          (onChange)="onPageSizeChange($event.value)"
+          [appendTo]="'body'"
+          placeholder="Select Page Size"
+          styleClass="ml-2"
+        ></p-dropdown> -->
+      </div>
+    </div>
+  </section>
   <!-- Hero 3: Inspire -->
   <section
     id="hero3"
     class="min-h-screen relative overflow-hidden bg-gray-900 py-20"
   >
-    <div class="absolute inset-0 z-0 opacity-20">
+    <!-- <div class="absolute inset-0 z-0 opacity-20">
       <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4">
         <img
-          src="/placeholder.svg?height=300&width=300"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/2560px-Samsung_Logo.svg.png"
           alt="Tech 1"
           class="w-full h-40 object-cover rounded-lg"
         />
         <img
-          src="/placeholder.svg?height=300&width=300"
+          src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcR3nmunzAMLFixkftqe0-WgfBK3LeFqi713NlvkI_HACBGsXtiacCMRQsaUD9DE2WrQMKw6yAev2NFMk7BGLLKFbKuyEBjbuZbV7OYau3LmPnOrwgBOyGaZIQ"
           alt="Tech 2"
           class="w-full h-40 object-cover rounded-lg"
         />
@@ -169,16 +296,13 @@
           class="w-full h-40 object-cover rounded-lg"
         />
       </div>
-    </div>
+    </div> -->
     <div class="relative z-10 container mx-auto px-4">
       <div class="text-center mb-16">
         <h2
           class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
         >
-          <span class="text-motion" id="hero3-text-motion">
-            <span>Inspire</span>
-          </span>
-          Innovation
+          Inspire Innovation
         </h2>
         <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
           Discover how our customers are using technology to transform their
@@ -192,10 +316,10 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div
-          class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+          class="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
         >
           <img
-            src="/placeholder.svg?height=400&width=600"
+            src="https://images.unsplash.com/photo-1507646227500-4d389b0012be?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Smart Home Setup"
             class="w-full h-48 object-cover"
           />
@@ -213,10 +337,10 @@
           </div>
         </div>
         <div
-          class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+          class="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
         >
           <img
-            src="/placeholder.svg?height=400&width=600"
+            src="https://images.unsplash.com/photo-1717323181080-334e21c2dde5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Home Office Setup"
             class="w-full h-48 object-cover"
           />
@@ -233,10 +357,10 @@
           </div>
         </div>
         <div
-          class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+          class="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
         >
           <img
-            src="/placeholder.svg?height=400&width=600"
+            src="https://plus.unsplash.com/premium_photo-1688678097388-a0c77ea9ace1?q=80&w=2046&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Gaming Setup"
             class="w-full h-48 object-cover"
           />
@@ -255,9 +379,452 @@
       </div>
     </div>
   </section>
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+  <!--  -->
+  <section class="py-16 bg-gray-900">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-white text-center mb-8">
+        Featured Products
+      </h2>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- <div class="swiper-slide">
+            <img
+              src="https://images.samsung.com/in/smartphones/galaxy-s24-ultra/images/galaxy-s24-ultra-highlights-camera-overview.jpg?imbypass=true"
+              alt="Featured Product 1"
+              class="w-full h-64 object-cover rounded-lg"
+            />
+            <h3 class="mt-4 text-xl font-semibold">Latest 4K Smart TV</h3>
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="https://images.samsung.com/in/smartphones/galaxy-s24-ultra/images/galaxy-s24-ultra-highlights-color-carousel-exclusive.jpg?imbypass=true"
+              alt="Featured Product 2"
+              class="w-full h-64 object-cover rounded-lg"
+            />
+            <h3 class="mt-4 text-xl font-semibold">
+              Noise-Cancelling Headphones
+            </h3>
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="/placeholder.svg?height=400&width=600"
+              alt="Featured Product 3"
+              class="w-full h-64 object-cover rounded-lg"
+            />
+            <h3 class="mt-4 text-xl font-semibold">
+              High-Performance Gaming Laptop
+            </h3>
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="/placeholder.svg?height=400&width=600"
+              alt="Featured Product 4"
+              class="w-full h-64 object-cover rounded-lg"
+            />
+            <h3 class="mt-4 text-xl font-semibold">
+              Smart Home Security System
+            </h3>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Month's Best Selling Items Section -->
+  <section class="py-16 bg-gray-900">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-white text-center mb-8">
+        This Month's Best Sellers
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gray-100 rounded-lg p-6 shadow-md">
+          <img
+            src="/placeholder.svg?height=300&width=300"
+            alt="Best Seller 1"
+            class="w-full h-48 object-cover rounded-lg mb-4"
+          />
+          <h3 class="font-semibold text-xl mb-2">Wireless Earbuds</h3>
+          <p class="text-gray-600 mb-4">
+            True wireless with amazing sound quality
+          </p>
+          <span class="text-blue-600 font-bold text-lg">$129.99</span>
+        </div>
+        <div class="bg-gray-100 rounded-lg p-6 shadow-md">
+          <img
+            src="/placeholder.svg?height=300&width=300"
+            alt="Best Seller 2"
+            class="w-full h-48 object-cover rounded-lg mb-4"
+          />
+          <h3 class="font-semibold text-xl mb-2">Smart Watch</h3>
+          <p class="text-gray-600 mb-4">
+            Track your fitness and stay connected
+          </p>
+          <span class="text-blue-600 font-bold text-lg">$199.99</span>
+        </div>
+        <div class="bg-gray-100 rounded-lg p-6 shadow-md">
+          <img
+            src="/placeholder.svg?height=300&width=300"
+            alt="Best Seller 3"
+            class="w-full h-48 object-cover rounded-lg mb-4"
+          />
+          <h3 class="font-semibold text-xl mb-2">Portable Charger</h3>
+          <p class="text-gray-600 mb-4">Fast charging for all your devices</p>
+          <span class="text-blue-600 font-bold text-lg">$49.99</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Category Section -->
+  <section class="py-16 bg-gray-900">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-white mb-8">
+        Shop by Category
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <a
+          href="#"
+          class="bg-white rounded-lg p-6 shadow-md text-center hover:shadow-lg transition duration-300"
+        >
+          <i
+            data-feather="smartphone"
+            class="w-12 h-12 mx-auto mb-4 text-blue-600"
+          ></i>
+          <h3 class="font-semibold text-lg">Smartphones</h3>
+        </a>
+        <a
+          href="#"
+          class="bg-white rounded-lg p-6 shadow-md text-center hover:shadow-lg transition duration-300"
+        >
+          <i data-feather="tv" class="w-12 h-12 mx-auto mb-4 text-blue-600"></i>
+          <h3 class="font-semibold text-lg">TVs & Home Theater</h3>
+        </a>
+        <a
+          href="#"
+          class="bg-white rounded-lg p-6 shadow-md text-center hover:shadow-lg transition duration-300"
+        >
+          <i
+            data-feather="headphones"
+            class="w-12 h-12 mx-auto mb-4 text-blue-600"
+          ></i>
+          <h3 class="font-semibold text-lg">Audio</h3>
+        </a>
+        <a
+          href="#"
+          class="bg-white rounded-lg p-6 shadow-md text-center hover:shadow-lg transition duration-300"
+        >
+          <i
+            data-feather="camera"
+            class="w-12 h-12 mx-auto mb-4 text-blue-600"
+          ></i>
+          <h3 class="font-semibold text-lg">Cameras</h3>
+        </a>
+        <a
+          href="#"
+          class="bg-white rounded-lg p-6 shadow-md text-center hover:shadow-lg transition duration-300"
+        >
+          <i
+            data-feather="watch"
+            class="w-12 h-12 mx-auto mb-4 text-blue-600"
+          ></i>
+          <h3 class="font-semibold text-lg">Wearables</h3>
+        </a>
+        <a
+          href="#"
+          class="bg-white rounded-lg p-6 shadow-md text-center hover:shadow-lg transition duration-300"
+        >
+          <i
+            data-feather="cpu"
+            class="w-12 h-12 mx-auto mb-4 text-blue-600"
+          ></i>
+          <h3 class="font-semibold text-lg">Computer Components</h3>
+        </a>
+        <a
+          href="#"
+          class="bg-white rounded-lg p-6 shadow-md text-center hover:shadow-lg transition duration-300"
+        >
+          <i
+            data-feather="hard-drive"
+            class="w-12 h-12 mx-auto mb-4 text-blue-600"
+          ></i>
+          <h3 class="font-semibold text-lg">Storage</h3>
+        </a>
+        <a
+          href="#"
+          class="bg-white rounded-lg p-6 shadow-md text-center hover:shadow-lg transition duration-300"
+        >
+          <i
+            data-feather="grid"
+            class="w-12 h-12 mx-auto mb-4 text-blue-600"
+          ></i>
+          <h3 class="font-semibold text-lg">Accessories</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Category Section -->
+  <section class="w-full py-12 md:py-24 lg:py-32 bg-gray-900">
+    <div class="container mx-auto px-4 md:px-6">
+      <h2
+        class="text-3xl font-bold tracking-tighter text-center text-white mb-12"
+      >
+        Shop by Category
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <a
+          href="#"
+          class="bg-white rounded-lg p-6 shadow-md text-center hover:shadow-lg transition duration-300"
+        >
+          <i
+            data-feather="smartphone"
+            class="w-12 h-12 mx-auto mb-4 text-blue-600"
+          ></i>
+          <h3 class="font-semibold text-lg">Smartphones</h3>
+        </a>
+        <a
+          href="#"
+          class="bg-white rounded-lg p-6 shadow-md text-center hover:shadow-lg transition duration-300"
+        >
+          <i data-feather="tv" class="w-12 h-12 mx-auto mb-4 text-blue-600"></i>
+          <h3 class="font-semibold text-lg">TVs & Home Theater</h3>
+        </a>
+        <a
+          href="#"
+          class="bg-white rounded-lg p-6 shadow-md text-center hover:shadow-lg transition duration-300"
+        >
+          <i
+            data-feather="headphones"
+            class="w-12 h-12 mx-auto mb-4 text-blue-600"
+          ></i>
+          <h3 class="font-semibold text-lg">Audio</h3>
+        </a>
+        <a
+          href="#"
+          class="bg-white rounded-lg p-6 shadow-md text-center hover:shadow-lg transition duration-300"
+        >
+          <i
+            data-feather="camera"
+            class="w-12 h-12 mx-auto mb-4 text-blue-600"
+          ></i>
+          <h3 class="font-semibold text-lg">Cameras</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Month's Best Selling Items Section -->
+  <section class="w-full py-12 md:py-24 lg:py-32 bg-gray-900">
+    <div class="container mx-auto px-4 md:px-6">
+      <h2
+        class="text-3xl font-bold tracking-tighter text-center mb-12 text-white"
+      >
+        This Month's Best Sellers
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gray-100 rounded-lg p-6 shadow-md">
+          <img
+            src="/placeholder.svg?height=300&width=300"
+            alt="Best Seller 1"
+            class="w-full h-48 object-cover rounded-lg mb-4"
+          />
+          <h3 class="font-semibold text-xl mb-2">Wireless Earbuds</h3>
+          <p class="text-gray-600 mb-4">
+            True wireless with amazing sound quality
+          </p>
+          <span class="text-blue-600 font-bold text-lg">$129.99</span>
+        </div>
+        <div class="bg-gray-100 rounded-lg p-6 shadow-md">
+          <img
+            src="/placeholder.svg?height=300&width=300"
+            alt="Best Seller 2"
+            class="w-full h-48 object-cover rounded-lg mb-4"
+          />
+          <h3 class="font-semibold text-xl mb-2">Smart Watch</h3>
+          <p class="text-gray-600 mb-4">
+            Track your fitness and stay connected
+          </p>
+          <span class="text-blue-600 font-bold text-lg">$199.99</span>
+        </div>
+        <div class="bg-gray-100 rounded-lg p-6 shadow-md">
+          <img
+            src="/placeholder.svg?height=300&width=300"
+            alt="Best Seller 3"
+            class="w-full h-48 object-cover rounded-lg mb-4"
+          />
+          <h3 class="font-semibold text-xl mb-2">Portable Charger</h3>
+          <p class="text-gray-600 mb-4">Fast charging for all your devices</p>
+          <span class="text-blue-600 font-bold text-lg">$49.99</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carousel Section -->
+  <section class="w-full py-12 md:py-24 lg:py-32 bg-gray-900">
+    <div class="container mx-auto px-4 md:px-6">
+      <h2
+        class="text-3xl font-bold tracking-tighter text-white text-center mb-12"
+      >
+        Featured Products
+      </h2>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img
+              src="/placeholder.svg?height=400&width=600"
+              alt="Featured Product 1"
+              class="w-full h-64 object-cover rounded-lg"
+            />
+            <h3 class="mt-4 text-xl font-semibold">Latest 4K Smart TV</h3>
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="/placeholder.svg?height=400&width=600"
+              alt="Featured Product 2"
+              class="w-full h-64 object-cover rounded-lg"
+            />
+            <h3 class="mt-4 text-xl font-semibold">
+              Noise-Cancelling Headphones
+            </h3>
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="/placeholder.svg?height=400&width=600"
+              alt="Featured Product 3"
+              class="w-full h-64 object-cover rounded-lg"
+            />
+            <h3 class="mt-4 text-xl font-semibold">
+              High-Performance Gaming Laptop
+            </h3>
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="/placeholder.svg?height=400&width=600"
+              alt="Featured Product 4"
+              class="w-full h-64 object-cover rounded-lg"
+            />
+            <h3 class="mt-4 text-xl font-semibold">
+              Smart Home Security System
+            </h3>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Smartphone Section -->
+  <section class="w-full py-12 md:py-24 lg:py-32 bg-gray-900">
+    <div class="container mx-auto px-4 md:px-6">
+      <h2
+        class="text-3xl font-bold tracking-tighter text-white text-center text-white mb-12"
+      >
+        Featured Smartphones
+      </h2>
+      <!-- <div class="flex justify-center space-x-8 mb-12">
+        <img
+          src="https://www.apple.com/v/iphone-16-pro/c/images/overview/welcome/hero_endframe__b3cjfkquc2s2_xlarge.jpg"
+          alt="Apple"
+          class="h-12 w-auto"
+        />
+        <img
+          src="https://images.samsung.com/is/image/samsung/assets/us/about-us/brand/logo/pc/720_600_1.png?$720_N_PNG$"
+          alt="Samsung"
+          class="h-12 w-auto"
+        />
+        <img
+          src="/placeholder.svg?height=50&width=50"
+          alt="Google"
+          class="h-12 w-auto"
+        />
+        <img
+          src="/placeholder.svg?height=50&width=50"
+          alt="OnePlus"
+          class="h-12 w-auto"
+        />
+        <img
+          src="/placeholder.svg?height=50&width=50"
+          alt="Xiaomi"
+          class="h-12 w-auto"
+        />
+      </div> -->
+      <h3 class="text-2xl font-semibold text-center mb-6 text-white">
+        New Releases
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-gray-100 rounded-lg p-4 shadow-md">
+          <img
+            src="/placeholder.svg?height=300&width=300"
+            alt="iPhone 14 Pro"
+            class="w-full h-48 object-cover rounded-lg mb-4"
+          />
+          <h4 class="font-semibold text-lg mb-2">iPhone 14 Pro</h4>
+          <p class="text-gray-600">Latest Apple flagship with dynamic island</p>
+        </div>
+        <div class="bg-gray-100 rounded-lg p-4 shadow-md">
+          <img
+            src="/placeholder.svg?height=300&width=300"
+            alt="Samsung Galaxy S23 Ultra"
+            class="w-full h-48 object-cover rounded-lg mb-4"
+          />
+          <h4 class="font-semibold text-lg mb-2">Samsung Galaxy S23 Ultra</h4>
+          <p class="text-gray-600">Powerful Android with S Pen support</p>
+        </div>
+        <div class="bg-gray-100 rounded-lg p-4 shadow-md">
+          <img
+            src="/placeholder.svg?height=300&width=300"
+            alt="Google Pixel 7 Pro"
+            class="w-full h-48 object-cover rounded-lg mb-4"
+          />
+          <h4 class="font-semibold text-lg mb-2">Google Pixel 7 Pro</h4>
+          <p class="text-gray-600">
+            Pure Android experience with top-tier camera
+          </p>
+        </div>
+        <div class="bg-gray-100 rounded-lg p-4 shadow-md">
+          <img
+            src="/placeholder.svg?height=300&width=300"
+            alt="OnePlus 11"
+            class="w-full h-48 object-cover rounded-lg mb-4"
+          />
+          <h4 class="font-semibold text-lg mb-2">OnePlus 11</h4>
+          <p class="text-gray-600">Fast charging and smooth performance</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer class="bg-white mt-8 py-12">
+<!--Pagination  -->
+<!-- <div class="pagination-controls">
+  <p-button
+    label="Previous"
+    (click)="onPageChange(currentPage - 1)"
+    [disabled]="currentPage <= 1"
+    styleClass="mr-2"
+  ></p-button>
+  <span>Page {{ currentPage }}</span>
+  <p-button
+    label="Next"
+    (click)="onPageChange(currentPage + 1)"
+    [disabled]="currentPage >= totalItems / pageSize"
+    styleClass="ml-2"
+  ></p-button>
+
+  <p-dropdown
+    [options]="pageSizeOptions"
+    (onChange)="onPageSizeChange($event.value)"
+    [appendTo]="'body'"
+    placeholder="Select Page Size"
+    styleClass="ml-2"
+  ></p-dropdown>
+</div> -->
+<footer class="bg-blue-100 mt-8 py-12">
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div>
@@ -391,29 +958,7 @@
     </div>
   </div>
 </footer>
-<div class="pagination-controls">
-  <p-button
-    label="Previous"
-    (click)="onPageChange(currentPage - 1)"
-    [disabled]="currentPage <= 1"
-    styleClass="mr-2"
-  ></p-button>
-  <span>Page {{ currentPage }}</span>
-  <p-button
-    label="Next"
-    (click)="onPageChange(currentPage + 1)"
-    [disabled]="currentPage >= totalItems / pageSize"
-    styleClass="ml-2"
-  ></p-button>
 
-  <p-dropdown
-    [options]="pageSizeOptions"
-    (onChange)="onPageSizeChange($event.value)"
-    [appendTo]="'body'"
-    placeholder="Select Page Size"
-    styleClass="ml-2"
-  ></p-dropdown>
-</div>
 <!-- ////////////////////////////////////////////////////////////////////////////////// -->
 
 <main>
@@ -426,7 +971,6 @@
       (input)="onFilterChange('modelCode', $event)"
       styleClass="w-full mb-3"
     />
-
     <input
       type="text"
       pInputText
@@ -434,7 +978,6 @@
       (input)="onFilterChange('modelName', $event)"
       styleClass="w-full mb-3"
     />
-
     <input
       type="text"
       pInputText
@@ -442,8 +985,6 @@
       (input)="onFilterChange('displayName', $event)"
       styleClass="w-full mb-3"
     />
-
-    <!-- Sort Dropdown using PrimeNG Dropdown -->
     <p-dropdown
       [options]="sortOptions"
       placeholder="Select Sort"
@@ -451,92 +992,43 @@
       styleClass="mb-3"
     ></p-dropdown>
   </div>
+</main>
+<!-- //last  design  -->
 
-  <section class="product-grid">
-    <h2>Explore our Products</h2>
-    <div class="grid">
-      <div class="product-card" *ngFor="let product of data">
-        <img [src]="product.thumbUrl" [alt]="product.displayName" />
-        <div class="product-info">
-          <h3>{{ product.displayName }}</h3>
-          <div class="price-rating">
-            <div class="price">
-              <span class="current-price">{{ product.price }}</span>
-              <span class="old-price" *ngIf="product.oldPrice">
-                ${{ product.oldPrice.toFixed(2) }}
-              </span>
-            </div>
-            <div class="rating">
-              <span class="stars">
-                <i class="material-icons" *ngFor="let star of [1, 2, 3, 4, 5]">
-                  {{ star <= product.rating ? "star" : "star_border" }}
-                </i>
-              </span>
-              <span class="reviews">({{ product.reviews }})</span>
-            </div>
+<!--LAst design detail  -->
+<section class="product-grid">
+  <h2>Explore our Products</h2>
+  <div class="grid">
+    <div class="product-card" *ngFor="let product of data">
+      <img [src]="product.thumbUrl" [alt]="product.displayName" />
+      <div class="product-info">
+        <h3>{{ product.displayName }}</h3>
+        <div class="price-rating">
+          <div class="price">
+            <span class="current-price">{{ product.price }}</span>
+            <span class="old-price" *ngIf="product.oldPrice">
+              ${{ product.oldPrice.toFixed(2) }}
+            </span>
+          </div>
+          <div class="rating">
+            <span class="stars">
+              <i class="material-icons" *ngFor="let star of [1, 2, 3, 4, 5]">
+                {{ star <= product.rating ? "star" : "star_border" }}
+              </i>
+            </span>
+            <span class="reviews">({{ product.reviews }})</span>
           </div>
         </div>
-        <p-button
-          class="add-to-cart"
-          (onClick)="ProductPreview(product)"
-          label="Show Product"
-        />
       </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="footer-content">
-    <div class="footer-section">
-      <h3>{{ shopName }}</h3>
-      <p>Your one-stop shop for all electronics needs.</p>
-    </div>
-    <div class="footer-section">
-      <h3>Quick Links</h3>
-    </div>
-    <div class="footer-section">
-      <h3>Contact Us</h3>
-      <p>Phone: (123) 456-7890</p>
-    </div>
-    <div class="footer-section">
-      <h3>Newsletter</h3>
-      <form class="newsletter-form">
-        <input type="email" placeholder="Enter your email" />
-        <button type="submit">Subscribe</button>
-      </form>
+      <p-button
+        class="add-to-cart"
+        (onClick)="ProductPreview(product)"
+        label="Show Product"
+      />
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>&copy; 2023 {{ shopName }}. All rights reserved.</p>
-  </div>
-</footer>
-<!--  -->
-<!-- <div class="pagination-controls">
-  <p-button
-    label="Previous"
-    (click)="onPageChange(currentPage - 1)"
-    [disabled]="currentPage <= 1"
-    styleClass="mr-2"
-  ></p-button>
-  <span>Page {{ currentPage }}</span>
-  <p-button
-    label="Next"
-    (click)="onPageChange(currentPage + 1)"
-    [disabled]="currentPage >= totalItems / pageSize"
-    styleClass="ml-2"
-  ></p-button>
-
-  <p-dropdown
-    [options]="pageSizeOptions"
-    (onChange)="onPageSizeChange($event.value)"
-    [appendTo]="'body'"
-    placeholder="Select Page Size"
-    styleClass="ml-2"
-  ></p-dropdown>
-</div> -->
-
-<!--  -->
+</section>
+<!-- open new product section -->
 <p-dialog
   maskStyleClass="backdrop-blur-sm"
   styleClass="!border-0 !bg-transparent"

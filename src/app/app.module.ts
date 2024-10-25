@@ -36,7 +36,11 @@ import { DockModule } from 'primeng/dock';
 import { CommonModule } from '@angular/common';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { MenubarModule } from 'primeng/menubar';
-
+import { TabViewModule } from 'primeng/tabview';
+import { CardModule } from 'primeng/card';
+import { PanelModule } from 'primeng/panel';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { FileUploadModule } from 'primeng/fileupload';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +51,11 @@ import { MenubarModule } from 'primeng/menubar';
     HomeComponent,
   ],
   imports: [
+    TabViewModule,
+    CardModule,
+    PanelModule,
+    InputTextareaModule,
+    FileUploadModule,
     MenubarModule,
     InputTextModule,
     RadioButtonModule,
@@ -61,7 +70,6 @@ import { MenubarModule } from 'primeng/menubar';
     GalleriaModule,
     DropdownModule,
     SplitterModule,
-    // DragDropModule,
     DialogModule,
     FormsModule,
     ButtonModule,

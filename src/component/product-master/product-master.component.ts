@@ -1,39 +1,45 @@
 import { Component, HostListener } from '@angular/core';
-import { APIServicesService } from '../../Services/apiservices.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { APIServicesService } from '../../Services/apiservices.service';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 interface Product {
-  id: string;
-  title: string;
-  description: string;
-  category: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  tags: string[];
-  brand: string;
-  sku: string;
-  weight: number;
-  features: string[];
-  dimensions: {
-    width: number;
-    height: number;
-    depth: number;
+  productId: string;
+  name: string;
+  description: {
+    text: string;
+    images: Array<{ url: string; altText: string }>;
+    video?: { url: string; description: string };
   };
-  warrantyInformation: string;
-  shippingInformation: string;
-  availabilityStatus: string;
-  returnPolicy: string;
-  minimumOrderQuantity: number;
-  meta: {
-    createdAt: Date;
-    updatedAt: Date;
-    barcode: string;
-    qrCode: string;
+  category: {
+    main: string;
+    sub: string;
+    subCategories?: string[];
   };
-  thumbnail: string;
-  images: string[];
-  reviews: Array<{ user: string; rating: number; comment: string; date: Date }>;
+  brand: {
+    name: string;
+    logo: string;
+  };
+  price: {
+    current: number;
+    original: number;
+    currency: string;
+    discount?: { percentage: number; expiresOn: string };
+  };
+  stock: {
+    quantity: number;
+    status: string;
+  };
+  images: {
+    default: string;
+    variants: Array<{
+      color: string;
+      images: Array<{ imageUrl: string; altText: string }>;
+      stock: number | null;
+    }>;
+  };
+  specifications?: any;
+  metadata?: any;
+  shipping?: any;
+  reviews?: any[];
 }
 
 @Component({
@@ -42,172 +48,74 @@ interface Product {
   styleUrls: ['./product-master.component.scss'],
 })
 export class ProductMasterComponent {
-  product: Product = {
-    id: '',
-    title: '',
-    description: '',
-    category: '',
-    price: 0,
-    discountPercentage: 0,
-    rating: 0,
-    stock: 0,
-    tags: [''],
-    brand: '',
-    sku: '',
-    weight: 0,
-    features: [''],
-    dimensions: {
-      width: 0,
-      height: 0,
-      depth: 0,
+  product = {
+    productId: '',
+    name: '',
+    description: {
+      text: '',
+      images: [],
+      video: { url: '', description: '' },
     },
-    warrantyInformation: '',
-    shippingInformation: '',
-    availabilityStatus: '',
-    returnPolicy: '',
-    minimumOrderQuantity: 1,
-    meta: {
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      barcode: '',
-      qrCode: '',
+    category: {
+      main: '',
+      sub: '',
+      subCategories: [],
     },
-    thumbnail: '',
-    images: [''],
-    reviews: [{ user: '', rating: 0, comment: '', date: new Date() }],
+    brand: {
+      name: '',
+      logo: '',
+    },
+    price: {
+      current: null,
+      original: null,
+      currency: 'USD',
+      discount: { percentage: null, expiresOn: null },
+    },
+    stock: {
+      quantity: null,
+      status: 'in_stock',
+    },
+    images: {
+      default: '',
+      variants: [
+        { color: '', images: [{ imageUrl: '', altText: '' }], stock: null },
+      ],
+    },
+    specifications: {},
+    metadata: {},
+    shipping: {},
+    reviews: [],
   };
 
-  availabilityOptions = [
-    { label: 'In Stock', value: 'IN_STOCK' },
-    { label: 'Out of Stock', value: 'OUT_OF_STOCK' },
-    { label: 'Pre-order', value: 'PRE_ORDER' },
-  ];
-
-  eventId: string = '';
-
-  // constructor(private apiService: APIServicesService) {}
-
-  addTag(): void {
-    this.product.tags.push('');
-  }
-
-  removeTag(index: number): void {
-    if (this.product.tags.length > 1) {
-      this.product.tags.splice(index, 1);
-    }
-  }
-
-  addFeature(): void {
-    this.product.features.push('');
-  }
-
-  removeFeature(index: number): void {
-    if (this.product.features.length > 1) {
-      this.product.features.splice(index, 1);
-    }
-  }
-
-  addImage(): void {
-    this.product.images.push('');
-  }
-
-  removeImage(index: number): void {
-    if (this.product.images.length > 1) {
-      this.product.images.splice(index, 1);
-    }
-  }
-
-  addReview(): void {
-    this.product.reviews.push({
-      user: '',
-      rating: 0,
-      comment: '',
-      date: new Date(),
+  // Add a new variant
+  addVariant() {
+    this.product.images.variants.push({
+      color: '',
+      images: [{ imageUrl: '', altText: '' }],
+      stock: null,
     });
   }
 
-  removeReview(index: number): void {
-    if (this.product.reviews.length > 1) {
-      this.product.reviews.splice(index, 1);
+  // Add an image to a specific variant
+  addVariantImage(index: number) {
+    this.product.images.variants[index].images.push({
+      imageUrl: '',
+      altText: '',
+    });
+  }
+
+  // Remove a specific variant
+  removeVariant(index: number) {
+    this.product.images.variants.splice(index, 1);
+  }
+
+  // Handle form submission
+  onSubmit() {
+    if (this.product.productId && this.product.name) {
+      console.log('Submitted Product:', this.product);
+      // Add further submission logic here, like sending data to a server
+    } else {
+      console.error('Product ID and Name are required.');
     }
-  }
-
-  getEvent(event: string): void {
-    this.eventId = event;
-  }
-
-  @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent): void {
-    if (event.ctrlKey && event.altKey) {
-      switch (event.key) {
-        case 'p':
-          this.handleAddAction();
-          break;
-        case 'c':
-          this.handleRemoveAction();
-          break;
-      }
-      event.preventDefault();
-    }
-  }
-
-  private handleAddAction(): void {
-    switch (this.eventId) {
-      case 'tag':
-        this.addTag();
-        break;
-      case 'image':
-        this.addImage();
-        break;
-      case 'user':
-        this.addReview();
-        break;
-      case 'feature':
-        this.addFeature();
-        break;
-    }
-  }
-
-  private handleRemoveAction(): void {
-    switch (this.eventId) {
-      case 'tag':
-        this.removeTag(this.product.tags.length - 1);
-        break;
-      case 'image':
-        this.removeImage(this.product.images.length - 1);
-        break;
-      case 'user':
-        this.removeReview(this.product.reviews.length - 1);
-        break;
-      case 'feature':
-        this.removeFeature(this.product.features.length - 1);
-        break;
-    }
-  }
-
-  trackByFn(index: number): number {
-    return index;
-  }
-
-  onSubmit(): void {
-    const payload = {
-      ...this.product,
-      tags: this.product.tags.filter((t) => t.trim() !== ''),
-      images: this.product.images.filter((i) => i.trim() !== ''),
-      reviews: this.product.reviews.filter((r) => r.user && r.rating !== null),
-    };
-
-    console.log('Form submitted. Data:', JSON.stringify(payload));
-
-    // this.apiService.createProduct(payload).subscribe(
-    //   (response) => {
-    //     console.log('Product created successfully:', response);
-    //     // Handle success (e.g., show a success message, reset form, navigate to product list)
-    //   },
-    //   (error) => {
-    //     console.error('Error creating product:', error);
-    //     // Handle error (e.g., show an error message)
-    //   }
-    // );
   }
 }
