@@ -1,45 +1,32 @@
-import { Component, HostListener } from '@angular/core';
-// import { APIServicesService } from '../../Services/apiservices.service';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-interface Product {
-  productId: string;
+import { Component, OnInit } from '@angular/core';
+
+interface Price {
+  currency: string;
+  amount: number;
+}
+
+interface Variant {
+  storage: string;
+  ram: string;
+  price: Price;
+}
+
+interface RearCamera {
+  resolution: string;
+  aperture: string;
+  type: string;
+}
+
+interface Smartphone {
+  id: string;
   name: string;
-  description: {
-    text: string;
-    images: Array<{ url: string; altText: string }>;
-    video?: { url: string; description: string };
-  };
-  category: {
-    main: string;
-    sub: string;
-    subCategories?: string[];
-  };
-  brand: {
-    name: string;
-    logo: string;
-  };
-  price: {
-    current: number;
-    original: number;
-    currency: string;
-    discount?: { percentage: number; expiresOn: string };
-  };
-  stock: {
-    quantity: number;
-    status: string;
-  };
-  images: {
-    default: string;
-    variants: Array<{
-      color: string;
-      images: Array<{ imageUrl: string; altText: string }>;
-      stock: number | null;
-    }>;
-  };
-  specifications?: any;
-  metadata?: any;
-  shipping?: any;
-  reviews?: any[];
+  brand: string;
+  model: string;
+  releaseDate: string;
+  price: Price;
+  images: string[]; // Assuming these are URLs or paths to images
+  variants: Variant[];
+  rearCameras: RearCamera[];
 }
 
 @Component({
@@ -47,75 +34,238 @@ interface Product {
   templateUrl: './product-master.component.html',
   styleUrls: ['./product-master.component.scss'],
 })
-export class ProductMasterComponent {
-  product = {
-    productId: '',
+export class ProductMasterComponent implements OnInit {
+  smartphone: Smartphone = {
+    id: '',
     name: '',
-    description: {
-      text: '',
-      images: [],
-      video: { url: '', description: '' },
-    },
-    category: {
-      main: '',
-      sub: '',
-      subCategories: [],
-    },
-    brand: {
-      name: '',
-      logo: '',
-    },
+    brand: '',
+    model: '',
+    releaseDate: '',
     price: {
-      current: null,
-      original: null,
-      currency: 'USD',
-      discount: { percentage: null, expiresOn: null },
+      currency: '',
+      amount: 0,
     },
-    stock: {
-      quantity: null,
-      status: 'in_stock',
-    },
-    images: {
-      default: '',
-      variants: [
-        { color: '', images: [{ imageUrl: '', altText: '' }], stock: null },
-      ],
-    },
-    specifications: {},
-    metadata: {},
-    shipping: {},
-    reviews: [],
+    images: [],
+    variants: [],
+    rearCameras: [],
   };
 
-  // Add a new variant
+  constructor() {}
+
+  ngOnInit(): void {}
+
   addVariant() {
-    this.product.images.variants.push({
-      color: '',
-      images: [{ imageUrl: '', altText: '' }],
-      stock: null,
+    this.smartphone.variants.push({
+      storage: '',
+      ram: '',
+      price: { currency: '', amount: 0 },
     });
   }
 
-  // Add an image to a specific variant
-  addVariantImage(index: number) {
-    this.product.images.variants[index].images.push({
-      imageUrl: '',
-      altText: '',
-    });
-  }
-
-  // Remove a specific variant
   removeVariant(index: number) {
-    this.product.images.variants.splice(index, 1);
+    this.smartphone.variants.splice(index, 1);
   }
 
-  // Handle form submission
+  addRearCamera() {
+    this.smartphone.rearCameras.push({
+      resolution: '',
+      aperture: '',
+      type: '',
+    });
+  }
+
+  removeRearCamera(index: number) {
+    this.smartphone.rearCameras.splice(index, 1);
+  }
+
   onSubmit() {
-    if (this.product.productId && this.product.name) {
-      console.log('Submitted Product:', this.product);
-      // Add further submission logic here, like sending data to a server
-    } else {
-      console.error('Product ID and Name are required.');
-    }
+    console.log(this.smartphone);
+    // Here you can send the smartphone data to your backend or perform further actions
   }
 }
+
+// import { Component, OnInit } from '@angular/core';
+// import {
+//   FormArray,
+//   FormBuilder,
+//   FormGroup,
+//   FormControl,
+//   Validators,
+// } from '@angular/forms';
+
+// @Component({
+//   selector: 'app-product-master',
+//   templateUrl: './product-master.component.html',
+//   styleUrls: ['./product-master.component.scss'],
+// })
+// export class ProductMasterComponent implements OnInit {
+//   smartphoneForm!: FormGroup;
+
+//   constructor(private fb: FormBuilder) {}
+
+//   ngOnInit(): void {
+//     this.smartphoneForm = this.fb.group({
+//       id: ['', Validators.required],
+//       name: ['', Validators.required],
+//       brand: ['', Validators.required],
+//       model: ['', Validators.required],
+//       releaseDate: ['', Validators.required],
+//       price: this.fb.group({
+//         currency: ['', Validators.required],
+//         amount: [0, Validators.required],
+//       }),
+//       images: this.fb.array([this.fb.control('', Validators.required)]),
+//       availability: this.fb.group({
+//         inStock: [false],
+//         regions: this.fb.array([this.fb.control('', Validators.required)]),
+//         colors: this.fb.array([this.fb.control('', Validators.required)]),
+//         variants: this.fb.array([
+//           this.fb.group({
+//             storage: ['', Validators.required],
+//             ram: ['', Validators.required],
+//             price: this.fb.group({
+//               currency: ['', Validators.required],
+//               amount: [0, Validators.required],
+//             }),
+//           }),
+//         ]),
+//       }),
+//       specifications: this.fb.group({
+//         buildMaterial: this.fb.group({
+//           front: [''],
+//           back: [''],
+//           frame: [''],
+//         }),
+//         dimensions: this.fb.group({
+//           height: [''],
+//           width: [''],
+//           depth: [''],
+//           weight: [''],
+//         }),
+//         display: this.fb.group({
+//           type: [''],
+//           size: [''],
+//           resolution: [''],
+//           refreshRate: [''],
+//           brightness: [''],
+//         }),
+//         processor: this.fb.group({
+//           chipset: [''],
+//           cpu: [''],
+//           gpu: [''],
+//         }),
+//         memory: this.fb.group({
+//           ramOptions: this.fb.array([this.fb.control('', Validators.required)]),
+//           storageOptions: this.fb.array([
+//             this.fb.control('', Validators.required),
+//           ]),
+//           expandable: [false],
+//         }),
+//         camera: this.fb.group({
+//           rear: this.fb.array([
+//             this.fb.group({
+//               resolution: [''],
+//               aperture: [''],
+//               type: [''],
+//               features: this.fb.array([
+//                 this.fb.control('', Validators.required),
+//               ]),
+//             }),
+//           ]),
+//           front: this.fb.group({
+//             resolution: [''],
+//             aperture: [''],
+//           }),
+//           features: this.fb.array([this.fb.control('', Validators.required)]),
+//         }),
+//         battery: this.fb.group({
+//           capacity: [''],
+//           charging: this.fb.group({
+//             wired: [''],
+//             wireless: [false],
+//           }),
+//         }),
+//         os: this.fb.group({
+//           name: [''],
+//           version: [''],
+//           basedOn: [''],
+//           updateSupport: this.fb.group({
+//             osUpdates: [''],
+//             securityUpdates: [''],
+//           }),
+//         }),
+//         connectivity: this.fb.group({
+//           networks: this.fb.array([this.fb.control('', Validators.required)]),
+//           sim: [''],
+//           wifi: [''],
+//           bluetooth: [''],
+//           gps: [''],
+//           nfc: [false],
+//           usb: [''],
+//         }),
+//       }),
+//     });
+//   }
+//   //
+
+//   // Helper methods for dynamic controls
+//   get images(): FormArray {
+//     return this.smartphoneForm.get('images') as FormArray;
+//   }
+
+//   addImage() {
+//     this.images.push(new FormControl('', Validators.required));
+//   }
+
+//   removeImage(index: number) {
+//     this.images.removeAt(index);
+//   }
+
+//   get variants(): FormArray {
+//     return this.smartphoneForm.get(['availability', 'variants']) as FormArray;
+//   }
+
+//   addVariant() {
+//     this.variants.push(
+//       this.fb.group({
+//         storage: ['', Validators.required],
+//         ram: ['', Validators.required],
+//         price: this.fb.group({
+//           currency: ['', Validators.required],
+//           amount: [0, Validators.required],
+//         }),
+//       })
+//     );
+//   }
+
+//   removeVariant(index: number) {
+//     this.variants.removeAt(index);
+//   }
+
+//   get rearCameras(): FormArray {
+//     return this.smartphoneForm.get([
+//       'specifications',
+//       'camera',
+//       'rear',
+//     ]) as FormArray;
+//   }
+
+//   addRearCamera() {
+//     this.rearCameras.push(
+//       this.fb.group({
+//         resolution: [''],
+//         aperture: [''],
+//         type: [''],
+//         features: this.fb.array([this.fb.control('', Validators.required)]),
+//       })
+//     );
+//   }
+
+//   removeRearCamera(index: number) {
+//     this.rearCameras.removeAt(index);
+//   }
+
+//   onSubmit() {
+//     console.log(this.smartphoneForm.value);
+//   }
+// }

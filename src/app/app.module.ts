@@ -41,6 +41,7 @@ import { CardModule } from 'primeng/card';
 import { PanelModule } from 'primeng/panel';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FileUploadModule } from 'primeng/fileupload';
+import { TableModule } from 'primeng/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +52,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     HomeComponent,
   ],
   imports: [
+    TableModule,
     TabViewModule,
     CardModule,
     PanelModule,

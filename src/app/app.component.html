@@ -1,5 +1,41 @@
 <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
   <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="#" class="text-blue-600 font-bold text-3xl">Shivam Electronics</a>
+    <div class="hidden md:flex space-x-6">
+      <ng-container *ngFor="let item of items">
+        <a
+          pRipple
+          class="flex align-items-center p-menuitem-link"
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          >{{ item.label }}</a
+        >
+      </ng-container>
+    </div>
+    <div class="flex items-center space-x-4">
+      <button
+        class="bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition duration-300"
+      >
+        <i data-feather="search" class="w-5 h-5 text-gray-600"></i>
+      </button>
+      <button
+        class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300"
+      >
+        Sign Up
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Main content area with padding to avoid overlap -->
+<main style="padding-top: 8px">
+  <!-- Adjust the padding as needed -->
+  <div class="card"></div>
+  <router-outlet></router-outlet>
+</main>
+
+<!-- <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+  <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
     <a href="#" class="text-blue-600 font-bold text-3xl">Shivem Electronics</a>
     <div class="hidden md:flex space-x-6" *ngFor="let item of items">
       <a
@@ -25,59 +61,4 @@
   </nav>
 </header>
 <div class="card"></div>
-
-<!--  -->
-<!-- <nav>
-  <ul>
-    <li *ngFor="let item of navItems">
-      <p-menubar [model]="items" />
-
-      <a [routerLink]="item.path" routerLinkActive="active">{{ item.name }}</a>
-    </li>
-  </ul>
-</nav> -->
-
-<!-- <app-user-master></app-user-master>
-<app-home></app-home> -->
-<router-outlet />
-<!-- <p-menubar [model]="items">
-  <ng-template pTemplate="item" let-item let-root="root">
-    <a
-      pRipple
-      class="flex align-items-center p-menuitem-link"
-      [routerLink]="item.path"
-      routerLinkActive="active"
-    >
-      <span [class]="item.icon"></span>
-      <span class="ml-2">{{ item.label }}</span>
-      <span
-        *ngIf="item.shortcut"
-        class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1"
-      >
-        {{ item.shortcut }}
-      </span>
-      <i
-        *ngIf="item.items"
-        [ngClass]="[
-          'pi',
-          root ? 'pi-angle-down ml-2' : 'pi-angle-right ml-auto'
-        ]"
-      ></i>
-    </a>
-  </ng-template>
-
-  <ng-template pTemplate="end">
-    <div class="flex align-items-center gap-2">
-      <input
-        type="text"
-        pInputText
-        placeholder="Search"
-        class="w-8rem sm:w-auto"
-      />
-      <p-avatar
-        image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-        shape="circle"
-      />
-    </div>
-  </ng-template>
-</p-menubar> -->
+<router-outlet /> -->

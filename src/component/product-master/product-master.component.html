@@ -1,8 +1,553 @@
-<div class="container mx-auto p-4">
+<div class="max-w-4xl mx-auto p-4 text-sm">
+  <h2 class="text-xl font-bold mb-2">Smartphone Information</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+    <div>
+      <label class="block text-xs font-medium text-gray-700">ID</label>
+      <input
+        type="text"
+        class="w-full p-1 border rounded"
+        pInputText
+        [(ngModel)]="smartphone.id"
+        placeholder="ID"
+      />
+    </div>
+    <div>
+      <label class="block text-xs font-medium text-gray-700">Name</label>
+      <input
+        type="text"
+        class="w-full p-1 border rounded"
+        pInputText
+        [(ngModel)]="smartphone.name"
+        placeholder="Name"
+      />
+    </div>
+    <div>
+      <label class="block text-xs font-medium text-gray-700">Brand</label>
+      <input
+        type="text"
+        class="w-full p-1 border rounded"
+        pInputText
+        [(ngModel)]="smartphone.brand"
+        placeholder="Brand"
+      />
+    </div>
+    <div>
+      <label class="block text-xs font-medium text-gray-700">Model</label>
+      <input
+        type="text"
+        class="w-full p-1 border rounded"
+        pInputText
+        [(ngModel)]="smartphone.model"
+        placeholder="Model"
+      />
+    </div>
+    <div>
+      <label class="block text-xs font-medium text-gray-700"
+        >Release Date</label
+      >
+      <input
+        type="date"
+        class="w-full p-1 border rounded"
+        pInputText
+        [(ngModel)]="smartphone.releaseDate"
+      />
+    </div>
+    <div>
+      <label class="block text-xs font-medium text-gray-700"
+        >Price (Currency)</label
+      >
+      <input
+        type="text"
+        class="w-full p-1 border rounded"
+        pInputText
+        [(ngModel)]="smartphone.price.currency"
+        placeholder="Currency"
+      />
+    </div>
+    <div>
+      <label class="block text-xs font-medium text-gray-700"
+        >Price (Amount)</label
+      >
+      <input
+        type="number"
+        class="w-full p-1 border rounded"
+        pInputText
+        [(ngModel)]="smartphone.price.amount"
+        placeholder="Amount"
+      />
+    </div>
+    <div>
+      <label class="block text-xs font-medium text-gray-700">Images</label>
+      <input
+        type="text"
+        class="w-full p-1 border rounded"
+        pInputText
+        [(ngModel)]="smartphone.images"
+        placeholder="Comma-separated image URLs"
+      />
+      <small class="text-xs text-gray-500"
+        >Use commas to separate multiple image URLs.</small
+      >
+    </div>
+  </div>
+
+  <h3 class="text-lg font-semibold mt-4 mb-2">Variants</h3>
+  <p-table
+    [value]="smartphone.variants"
+    dataKey="storage"
+    class="w-full text-xs"
+  >
+    <ng-template pTemplate="header">
+      <tr class="bg-gray-100">
+        <th class="p-2">Storage</th>
+        <th class="p-2">RAM</th>
+        <th class="p-2">Price (Currency)</th>
+        <th class="p-2">Price (Amount)</th>
+        <th class="p-2">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-variant let-i="rowIndex">
+      <tr>
+        <td class="p-1">
+          <input
+            type="text"
+            class="w-full p-1 border rounded"
+            [(ngModel)]="variant.storage"
+            placeholder="Storage"
+          />
+        </td>
+        <td class="p-1">
+          <input
+            type="text"
+            class="w-full p-1 border rounded"
+            [(ngModel)]="variant.ram"
+            placeholder="RAM"
+          />
+        </td>
+        <td class="p-1">
+          <input
+            type="text"
+            class="w-full p-1 border rounded"
+            [(ngModel)]="variant.price.currency"
+            placeholder="Currency"
+          />
+        </td>
+        <td class="p-1">
+          <input
+            type="number"
+            class="w-full p-1 border rounded"
+            [(ngModel)]="variant.price.amount"
+            placeholder="Amount"
+          />
+        </td>
+        <td class="p-1">
+          <button
+            pButton
+            icon="pi pi-times"
+            (click)="removeVariant(i)"
+            label="Remove"
+            class="p-1 text-xs bg-red-500 text-white rounded"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <button
+    pButton
+    icon="pi pi-plus"
+    (click)="addVariant()"
+    label="Add Variant"
+    class="mt-2 p-1 text-xs bg-blue-500 text-white rounded"
+  ></button>
+
+  <h3 class="text-lg font-semibold mt-4 mb-2">Rear Cameras</h3>
+  <p-table
+    [value]="smartphone.rearCameras"
+    dataKey="resolution"
+    class="w-full text-xs"
+  >
+    <ng-template pTemplate="header">
+      <tr class="bg-gray-100">
+        <th class="p-2">Resolution</th>
+        <th class="p-2">Aperture</th>
+        <th class="p-2">Type</th>
+        <th class="p-2">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-camera let-i="rowIndex">
+      <tr>
+        <td class="p-1">
+          <input
+            type="text"
+            class="w-full p-1 border rounded"
+            [(ngModel)]="camera.resolution"
+            placeholder="Resolution"
+          />
+        </td>
+        <td class="p-1">
+          <input
+            type="text"
+            class="w-full p-1 border rounded"
+            [(ngModel)]="camera.aperture"
+            placeholder="Aperture"
+          />
+        </td>
+        <td class="p-1">
+          <input
+            type="text"
+            class="w-full p-1 border rounded"
+            [(ngModel)]="camera.type"
+            placeholder="Type"
+          />
+        </td>
+        <td class="p-1">
+          <button
+            pButton
+            icon="pi pi-times"
+            (click)="removeRearCamera(i)"
+            label="Remove"
+            class="p-1 text-xs bg-red-500 text-white rounded"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <button
+    pButton
+    icon="pi pi-plus"
+    (click)="addRearCamera()"
+    label="Add Rear Camera"
+    class="mt-2 p-1 text-xs bg-blue-500 text-white rounded"
+  ></button>
+
+  <button
+    pButton
+    label="Submit"
+    (click)="onSubmit()"
+    class="mt-4 w-full p-2 bg-green-500 text-white rounded"
+  ></button>
+</div>
+<!-- <div class="p-fluid">
+  <h2>Smartphone Information</h2>
+  <div class="p-field">
+    <label>ID</label>
+    <input
+      type="text"
+      pInputText
+      [(ngModel)]="smartphone.id"
+      placeholder="ID"
+    />
+  </div>
+  <div class="p-field">
+    <label>Name</label>
+    <input
+      type="text"
+      pInputText
+      [(ngModel)]="smartphone.name"
+      placeholder="Name"
+    />
+  </div>
+  <div class="p-field">
+    <label>Brand</label>
+    <input
+      type="text"
+      pInputText
+      [(ngModel)]="smartphone.brand"
+      placeholder="Brand"
+    />
+  </div>
+  <div class="p-field">
+    <label>Model</label>
+    <input
+      type="text"
+      pInputText
+      [(ngModel)]="smartphone.model"
+      placeholder="Model"
+    />
+  </div>
+  <div class="p-field">
+    <label>Release Date</label>
+    <input type="date" pInputText [(ngModel)]="smartphone.releaseDate" />
+  </div>
+  <div class="p-field">
+    <label>Price (Currency)</label>
+    <input
+      type="text"
+      pInputText
+      [(ngModel)]="smartphone.price.currency"
+      placeholder="Currency"
+    />
+  </div>
+  <div class="p-field">
+    <label>Price (Amount)</label>
+    <input
+      type="number"
+      pInputText
+      [(ngModel)]="smartphone.price.amount"
+      placeholder="Amount"
+    />
+  </div>
+  <div class="p-field">
+    <label>Images</label>
+    <input
+      type="text"
+      pInputText
+      [(ngModel)]="smartphone.images"
+      placeholder="Comma-separated image URLs"
+    />
+    <small>Use commas to separate multiple image URLs.</small>
+  </div>
+
+  <h3>Variants</h3>
+  <p-table [value]="smartphone.variants" dataKey="storage">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Storage</th>
+        <th>RAM</th>
+        <th>Price (Currency)</th>
+        <th>Price (Amount)</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-variant let-i="rowIndex">
+      <tr>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="variant.storage"
+            placeholder="Storage"
+          />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="variant.ram" placeholder="RAM" />
+        </td>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="variant.price.currency"
+            placeholder="Currency"
+          />
+        </td>
+        <td>
+          <input
+            type="number"
+            [(ngModel)]="variant.price.amount"
+            placeholder="Amount"
+          />
+        </td>
+        <td>
+          <button
+            pButton
+            icon="pi pi-times"
+            (click)="removeVariant(i)"
+            label="Remove"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <button
+    pButton
+    icon="pi pi-plus"
+    (click)="addVariant()"
+    label="Add Variant"
+  ></button>
+
+  <h3>Rear Cameras</h3>
+  <p-table [value]="smartphone.rearCameras" dataKey="resolution">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Resolution</th>
+        <th>Aperture</th>
+        <th>Type</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-camera let-i="rowIndex">
+      <tr>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="camera.resolution"
+            placeholder="Resolution"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="camera.aperture"
+            placeholder="Aperture"
+          />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="camera.type" placeholder="Type" />
+        </td>
+        <td>
+          <button
+            pButton
+            icon="pi pi-times"
+            (click)="removeRearCamera(i)"
+            label="Remove"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <button
+    pButton
+    icon="pi pi-plus"
+    (click)="addRearCamera()"
+    label="Add Rear Camera"
+  ></button>
+
+  <button pButton label="Submit" (click)="onSubmit()"></button>
+</div> -->
+
+<!-- 
+<form [formGroup]="smartphoneForm" (ngSubmit)="onSubmit()">
+  <div class="p-fluid">
+    <div class="p-field">
+      <label for="name">Name</label>
+      <input id="name" type="text" pInputText formControlName="name" />
+    </div>
+
+    <div class="p-field">
+      <label for="brand">Brand</label>
+      <input id="brand" type="text" pInputText formControlName="brand" />
+    </div>
+
+    <div class="p-field">
+      <label>Price</label>
+      <input
+        type="text"
+        pInputText
+        formControlName="price.currency"
+        placeholder="Currency"
+      />
+      <input
+        type="number"
+        pInputText
+        formControlName="price.amount"
+        placeholder="Amount"
+      />
+    </div>
+
+    <div class="p-field">
+      <label>Images</label>
+      <div *ngFor="let image of images.controls; let i = index">
+        <input
+          type="text"
+          pInputText
+          [formControl]="image"
+          placeholder="Image URL"
+        />
+        <button
+          type="button"
+          pButton
+          icon="pi pi-times"
+          (click)="removeImage(i)"
+          label="Remove"
+        ></button>
+      </div>
+      <button
+        type="button"
+        pButton
+        icon="pi pi-plus"
+        (click)="addImage()"
+        label="Add Image"
+      ></button>
+    </div>
+
+    <div class="p-field">
+      <label>Variants</label>
+      <div
+        *ngFor="let variant of variants.controls; let i = index"
+        [formGroup]="variant"
+      >
+        <input
+          type="text"
+          pInputText
+          formControlName="storage"
+          placeholder="Storage"
+        />
+        <input type="text" pInputText formControlName="ram" placeholder="RAM" />
+        <input
+          type="text"
+          pInputText
+          formControlName="price.currency"
+          placeholder="Currency"
+        />
+        <input
+          type="number"
+          pInputText
+          formControlName="price.amount"
+          placeholder="Amount"
+        />
+        <button
+          type="button"
+          pButton
+          icon="pi pi-times"
+          (click)="removeVariant(i)"
+          label="Remove"
+        ></button>
+      </div>
+      <button
+        type="button"
+        pButton
+        icon="pi pi-plus"
+        (click)="addVariant()"
+        label="Add Variant"
+      ></button>
+    </div>
+
+    <div class="p-field">
+      <label>Rear Cameras</label>
+      <div
+        *ngFor="let camera of rearCameras.controls; let i = index"
+        [formGroup]="camera"
+      >
+        <input
+          type="text"
+          pInputText
+          formControlName="resolution"
+          placeholder="Resolution"
+        />
+        <input
+          type="text"
+          pInputText
+          formControlName="aperture"
+          placeholder="Aperture"
+        />
+        <input
+          type="text"
+          pInputText
+          formControlName="type"
+          placeholder="Type"
+        />
+        <button
+          type="button"
+          pButton
+          icon="pi pi-times"
+          (click)="removeRearCamera(i)"
+          label="Remove"
+        ></button>
+      </div>
+      <button
+        type="button"
+        pButton
+        icon="pi pi-plus"
+        (click)="addRearCamera()"
+        label="Add Rear Camera"
+      ></button>
+    </div>
+
+    <button type="submit" pButton label="Submit"></button>
+  </div>
+</form>
+
   <h1 class="text-2xl font-bold mb-6 text-center">Product Input Form</h1>
 
   <form (ngSubmit)="onSubmit()" #productForm="ngForm">
-    <!-- Product ID -->
     <div class="mb-6 p-4 border rounded-lg shadow-md bg-white">
       <h2 class="text-lg font-semibold mb-2">Product ID</h2>
       <input
@@ -14,7 +559,6 @@
       />
     </div>
 
-    <!-- Product Name -->
     <div class="mb-6 p-4 border rounded-lg shadow-md bg-white">
       <h2 class="text-lg font-semibold mb-2">Product Name</h2>
       <input
@@ -26,7 +570,6 @@
       />
     </div>
 
-    <!-- Description -->
     <div class="mb-6 p-4 border rounded-lg shadow-md bg-white">
       <h2 class="text-lg font-semibold mb-2">Description</h2>
       <textarea
@@ -38,7 +581,6 @@
       ></textarea>
     </div>
 
-    <!-- Category -->
     <div class="mb-6 p-4 border rounded-lg shadow-md bg-white">
       <h2 class="text-lg font-semibold mb-2">Category</h2>
       <input
@@ -59,7 +601,6 @@
       />
     </div>
 
-    <!-- Brand -->
     <div class="mb-6 p-4 border rounded-lg shadow-md bg-white">
       <h2 class="text-lg font-semibold mb-2">Brand</h2>
       <input
@@ -78,7 +619,6 @@
       />
     </div>
 
-    <!-- Price -->
     <div class="mb-6 p-4 border rounded-lg shadow-md bg-white">
       <h2 class="text-lg font-semibold mb-2">Price</h2>
       <input
@@ -99,7 +639,6 @@
       />
     </div>
 
-    <!-- Stock Quantity -->
     <div class="mb-6 p-4 border rounded-lg shadow-md bg-white">
       <h2 class="text-lg font-semibold mb-2">Stock Quantity</h2>
       <input
@@ -111,7 +650,6 @@
       />
     </div>
 
-    <!-- Default Image URL -->
     <div class="mb-6 p-4 border rounded-lg shadow-md bg-white">
       <h2 class="text-lg font-semibold mb-2">Default Image URL</h2>
       <input
@@ -123,7 +661,6 @@
       />
     </div>
 
-    <!-- Variants Section -->
     <div class="mb-6 p-4 border rounded-lg shadow-md bg-white">
       <h2 class="text-lg font-semibold mb-2">Variants</h2>
       <div
@@ -174,4 +711,5 @@
 
     <button type="submit" class="mt-4 btn">Submit</button>
   </form>
-</div>
+</div> -->
+-->
